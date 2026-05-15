@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// PostaliApiRest SDK base feature
+
+class PostaliApiRestBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(PostaliApiRestContext $ctx, array $options): void {}
+    public function PostConstruct(PostaliApiRestContext $ctx): void {}
+    public function PostConstructEntity(PostaliApiRestContext $ctx): void {}
+    public function SetData(PostaliApiRestContext $ctx): void {}
+    public function GetData(PostaliApiRestContext $ctx): void {}
+    public function GetMatch(PostaliApiRestContext $ctx): void {}
+    public function SetMatch(PostaliApiRestContext $ctx): void {}
+    public function PrePoint(PostaliApiRestContext $ctx): void {}
+    public function PreSpec(PostaliApiRestContext $ctx): void {}
+    public function PreRequest(PostaliApiRestContext $ctx): void {}
+    public function PreResponse(PostaliApiRestContext $ctx): void {}
+    public function PreResult(PostaliApiRestContext $ctx): void {}
+    public function PreDone(PostaliApiRestContext $ctx): void {}
+    public function PreUnexpected(PostaliApiRestContext $ctx): void {}
+}

@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "municipality": {
+      "MUNICIPALITY00": {
+        "estado": "s14",
+        "municipio": [],
+        "state": "STATE01"
+      },
+      "MUNICIPALITY01": {
+        "estado": "s28",
+        "municipio": [],
+        "state": "STATE01"
+      },
+      "MUNICIPALITY02": {
+        "estado": "s3c",
+        "municipio": [],
+        "state": "STATE01"
+      }
+    }
+  },
+  "new": {
+    "municipality": {
+      "municipality_ref01": {
+        "estado": "s50",
+        "municipio": []
+      }
+    }
+  }
+}

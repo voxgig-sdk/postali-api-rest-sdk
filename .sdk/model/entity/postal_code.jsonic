@@ -1,0 +1,88 @@
+# Entity: postal_code
+
+main: kit: entity: postal_code: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "ciudad"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "codigo_postal"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "colonia"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "estado"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "municipio"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "postal_code"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "01000"
+                kind: "param"
+                name: "postal_code"
+                orig: "postal_code"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/codigo_postal/{postalCode}"
+          parts: [
+            "codigo_postal"
+            "{postal_code}"
+          ]
+          rename: {
+            param: {
+              postalCode: "postal_code"
+            }
+          }
+          select: {
+            exist: [
+              "postal_code"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "codigo_postal"
+      ]
+    ]
+  }
+
+
+
+}

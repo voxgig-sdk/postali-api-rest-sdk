@@ -1,0 +1,37 @@
+# Entity: state
+
+main: kit: entity: state: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "estado"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "state"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/estados"
+          parts: [
+            "estados"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

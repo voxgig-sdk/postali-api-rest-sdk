@@ -1,0 +1,254 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "postali API REST",
+    "description": "API REST for retrieving postal code information for Mexican addresses",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://postali.app/api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://postali.app/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/codigo_postal/{postalCode}": {
+      "get": {
+        "summary": "Get information by postal code",
+        "description": "Retrieves detailed information about a Mexican postal code including municipality, state, settlements, and other location data",
+        "operationId": "getByPostalCode",
+        "tags": [
+          "Postal Codes"
+        ],
+        "parameters": [
+          {
+            "name": "postalCode",
+            "in": "path",
+            "description": "Mexican postal code (5 digits)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]{5}$",
+              "example": "01000"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with postal code information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostalCodeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid postal code format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Postal code not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/municipios/{state}": {
+      "get": {
+        "summary": "Get municipalities by state",
+        "description": "Retrieves a list of municipalities for a given Mexican state",
+        "operationId": "getMunicipalitiesByState",
+        "tags": [
+          "Municipalities"
+        ],
+        "parameters": [
+          {
+            "name": "state",
+            "in": "path",
+            "description": "Mexican state name or code",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Ciudad de México"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of municipalities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipalitiesResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "State not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/estados": {
+      "get": {
+        "summary": "Get all Mexican states",
+        "description": "Retrieves a list of all Mexican states",
+        "operationId": "getStates",
+        "tags": [
+          "States"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of states",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PostalCodeResponse": {
+        "type": "object",
+        "properties": {
+          "codigo_postal": {
+            "type": "string",
+            "description": "Postal code",
+            "example": "01000"
+          },
+          "municipio": {
+            "type": "string",
+            "description": "Municipality name",
+            "example": "Álvaro Obregón"
+          },
+          "estado": {
+            "type": "string",
+            "description": "State name",
+            "example": "Ciudad de México"
+          },
+          "colonias": {
+            "type": "array",
+            "description": "List of settlements/neighborhoods",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "San Ángel",
+              "Tizapán"
+            ]
+          },
+          "ciudad": {
+            "type": "string",
+            "description": "City name",
+            "example": "Ciudad de México"
+          }
+        }
+      },
+      "MunicipalitiesResponse": {
+        "type": "object",
+        "properties": {
+          "estado": {
+            "type": "string",
+            "description": "State name",
+            "example": "Ciudad de México"
+          },
+          "municipios": {
+            "type": "array",
+            "description": "List of municipalities",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Álvaro Obregón",
+              "Azcapotzalco",
+              "Benito Juárez"
+            ]
+          }
+        }
+      },
+      "StatesResponse": {
+        "type": "object",
+        "properties": {
+          "estados": {
+            "type": "array",
+            "description": "List of Mexican states",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Aguascalientes",
+              "Baja California",
+              "Baja California Sur",
+              "Campeche",
+              "Chiapas",
+              "Chihuahua",
+              "Ciudad de México",
+              "Coahuila",
+              "Colima",
+              "Durango"
+            ]
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Postal code not found"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error description"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Postal Codes",
+      "description": "Operations related to postal code lookup"
+    },
+    {
+      "name": "Municipalities",
+      "description": "Operations related to municipalities"
+    },
+    {
+      "name": "States",
+      "description": "Operations related to Mexican states"
+    }
+  ]
+}

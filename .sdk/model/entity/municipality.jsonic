@@ -1,0 +1,68 @@
+# Entity: municipality
+
+main: kit: entity: municipality: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "estado"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "municipio"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "municipality"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "Ciudad de México"
+                kind: "param"
+                name: "state"
+                orig: "state"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/municipios/{state}"
+          parts: [
+            "municipios"
+            "{state}"
+          ]
+          select: {
+            exist: [
+              "state"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "municipio"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://postali.app/api"
+      }
+      description: "API REST for retrieving postal code information for Mexican addresses"
+      servers: [
+        {
+          description: "Production server"
+          url: "https://postali.app/api"
+        }
+      ]
+      title: "postali API REST"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

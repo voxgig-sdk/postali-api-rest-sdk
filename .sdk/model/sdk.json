@@ -1,0 +1,552 @@
+{
+  "name": "postali-api-rest",
+  "origin": "voxgig-sdk",
+  "def": "postali-api-rest_0.1.0.json",
+  "main": {
+    "kit": {
+      "info": {
+        "contact": {
+          "url": "https://postali.app/api"
+        },
+        "description": "API REST for retrieving postal code information for Mexican addresses",
+        "servers": [
+          {
+            "description": "Production server",
+            "url": "https://postali.app/api"
+          }
+        ],
+        "title": "postali API REST",
+        "version": "1.0.0"
+      },
+      "config": {
+        "auth": {
+          "prefix": "Bearer"
+        },
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "entity": {
+        "municipality": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "estado",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "municipio",
+              "req": false,
+              "type": "`$ARRAY`",
+              "active": true
+            }
+          ],
+          "name": "municipality",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "example": "Ciudad de México",
+                        "kind": "param",
+                        "name": "state",
+                        "orig": "state",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/municipios/{state}",
+                  "parts": [
+                    "municipios",
+                    "{state}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "state"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "municipio"
+              ]
+            ]
+          },
+          "active": true
+        },
+        "postal_code": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "ciudad",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "codigo_postal",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "colonia",
+              "req": false,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "estado",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            },
+            {
+              "name": "municipio",
+              "req": false,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "postal_code",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "example": "01000",
+                        "kind": "param",
+                        "name": "postal_code",
+                        "orig": "postal_code",
+                        "reqd": true,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/codigo_postal/{postalCode}",
+                  "parts": [
+                    "codigo_postal",
+                    "{postal_code}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "postalCode": "postal_code"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "postal_code"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "codigo_postal"
+              ]
+            ]
+          },
+          "active": true
+        },
+        "state": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "estado",
+              "req": false,
+              "type": "`$ARRAY`",
+              "active": true
+            }
+          ],
+          "name": "state",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "method": "GET",
+                  "orig": "/estados",
+                  "parts": [
+                    "estados"
+                  ],
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true,
+                  "args": {},
+                  "select": {}
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        }
+      },
+      "feature": {
+        "test": {
+          "name": "test",
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1",
+          "active": true,
+          "config": {
+            "options": {
+              "active": false
+            }
+          },
+          "hook": {
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            }
+          },
+          "target": {
+            "ts": {
+              "deps": {}
+            },
+            "go": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            }
+          }
+        }
+      },
+      "flow": {
+        "BasicMunicipalityFlow": {
+          "entity": "municipality",
+          "kind": "basic",
+          "name": "BasicMunicipalityFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "municipality_ref01",
+                "srcdatavar": "municipality_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "municipality01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-municipality_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicMunicipalityFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicPostalCodeFlow": {
+          "entity": "postal_code",
+          "kind": "basic",
+          "name": "BasicPostalCodeFlow",
+          "step": [
+            {
+              "input": {
+                "ref": "postal_code_ref01",
+                "srcdatavar": "postal_code_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "postal_code01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-postal_code_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicPostalCodeFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicStateFlow": {
+          "entity": "state",
+          "kind": "basic",
+          "name": "BasicStateFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "state_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicStateFlow",
+          "active": true,
+          "param": {}
+        }
+      },
+      "target": {
+        "ts": {
+          "title": "TypeScript",
+          "ext": "ts",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "postali-api-rest"
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "deps": {
+            "dotenv": {
+              "active": true,
+              "version": "^17.4.2",
+              "kind": "dev"
+            },
+            "typescript": {
+              "active": true,
+              "version": "^5.9.3",
+              "kind": "dev"
+            },
+            "@types/node": {
+              "active": true,
+              "version": "^25.6.0",
+              "kind": "dev"
+            }
+          },
+          "name": "ts",
+          "active": true
+        },
+        "go": {
+          "title": "Golang",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "postali-api-rest"
+          },
+          "srcfeature": false,
+          "deps": {
+            "github.com/voxgig/struct": {
+              "active": true,
+              "version": "v0.0.0",
+              "replace": "./utility/struct",
+              "kind": "prod"
+            }
+          },
+          "name": "go",
+          "active": true
+        },
+        "lua": {
+          "title": "Lua",
+          "ext": "lua",
+          "comment": {
+            "line": "--"
+          },
+          "module": {
+            "name": "postali-api-rest"
+          },
+          "srcfeature": false,
+          "deps": {
+            "dkjson": {
+              "active": true,
+              "version": "2.5",
+              "kind": "prod"
+            }
+          },
+          "name": "lua",
+          "active": true
+        },
+        "php": {
+          "title": "PHP",
+          "ext": "php",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "postali-api-rest"
+          },
+          "srcfeature": false,
+          "deps": {},
+          "name": "php",
+          "active": true
+        },
+        "py": {
+          "title": "Python",
+          "ext": "py",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "postali-api-rest"
+          },
+          "srcfeature": false,
+          "deps": {
+            "requests": {
+              "active": true,
+              "version": "2.33",
+              "kind": "prod"
+            }
+          },
+          "name": "py",
+          "active": true
+        },
+        "rb": {
+          "title": "Ruby",
+          "ext": "rb",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "postali-api-rest"
+          },
+          "srcfeature": false,
+          "deps": {
+            "voxgig-struct": {
+              "active": true,
+              "version": "0.0.10",
+              "kind": "prod"
+            },
+            "json": {
+              "active": true,
+              "version": "0",
+              "kind": "prod"
+            }
+          },
+          "name": "rb",
+          "active": true
+        }
+      },
+      "option": {}
+    },
+    "def": {
+      "desc": ""
+    },
+    "api": {
+      "guide": {},
+      "entity": {}
+    }
+  },
+  "name__orig": "postali-api-rest",
+  "Name": "PostaliApiRest",
+  "name_": "postali_api_rest",
+  "name-": "postali-api-rest",
+  "NAME": "POSTALI-API-REST"
+}

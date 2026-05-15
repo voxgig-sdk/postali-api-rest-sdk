@@ -1,0 +1,32 @@
+# BasicPostalCodeFlow
+
+main: kit: flow: BasicPostalCodeFlow:
+{
+  entity: "postal_code",
+  kind: "basic",
+  name: "BasicPostalCodeFlow",
+  step: [
+    {
+      input: {
+        ref: "postal_code_ref01",
+        srcdatavar: "postal_code_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "postal_code01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-postal_code_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPostalCodeFlow"
+}

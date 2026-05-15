@@ -1,0 +1,27 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 3
+  metrics: count: method: 3
+
+  entity: municipality: {
+    path: "/municipios/{state}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: postal_code: {
+    path: "/codigo_postal/{postalCode}": {
+      rename: param: "postalCode": *"postal_code"
+      op: load: method: *GET
+    }
+  }
+
+  entity: state: {
+    path: "/estados": {
+      op: list: method: *GET
+    }
+  }
+
+}
