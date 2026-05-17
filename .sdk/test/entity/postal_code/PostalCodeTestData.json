@@ -7,7 +7,8 @@
         "colonia": [],
         "estado": "s35",
         "municipio": "s36",
-        "postal_code": "POSTAL_CODE01"
+        "postal_code": "POSTAL_CODE01",
+        "id": "POSTAL_CODE00"
       },
       "POSTAL_CODE01": {
         "ciudad": "s64",
@@ -15,7 +16,8 @@
         "colonia": [],
         "estado": "s67",
         "municipio": "s68",
-        "postal_code": "POSTAL_CODE01"
+        "postal_code": "POSTAL_CODE01",
+        "id": "POSTAL_CODE01"
       },
       "POSTAL_CODE02": {
         "ciudad": "s96",
@@ -23,7 +25,8 @@
         "colonia": [],
         "estado": "s99",
         "municipio": "s9a",
-        "postal_code": "POSTAL_CODE01"
+        "postal_code": "POSTAL_CODE01",
+        "id": "POSTAL_CODE02"
       }
     }
   },

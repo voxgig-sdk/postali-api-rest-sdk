@@ -4,17 +4,20 @@
       "MUNICIPALITY00": {
         "estado": "s14",
         "municipio": [],
-        "state": "STATE01"
+        "state": "STATE01",
+        "id": "MUNICIPALITY00"
       },
       "MUNICIPALITY01": {
         "estado": "s28",
         "municipio": [],
-        "state": "STATE01"
+        "state": "STATE01",
+        "id": "MUNICIPALITY01"
       },
       "MUNICIPALITY02": {
         "estado": "s3c",
         "municipio": [],
-        "state": "STATE01"
+        "state": "STATE01",
+        "id": "MUNICIPALITY02"
       }
     }
   },

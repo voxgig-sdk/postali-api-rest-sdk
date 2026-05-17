@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/postali-api-rest-sdk"
-	"github.com/voxgig-sdk/postali-api-rest-sdk/core"
+	sdk "github.com/voxgig-sdk/postali-api-rest-sdk/go"
+	"github.com/voxgig-sdk/postali-api-rest-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/postali-api-rest-sdk/go/utility/struct"
 )
 
 func TestMunicipalityEntity(t *testing.T) {

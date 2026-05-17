@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/postali-api-rest-sdk/core"
+	"github.com/voxgig-sdk/postali-api-rest-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/postali-api-rest-sdk/go/utility/struct"
 )
 
 type PostalCodeEntity struct {

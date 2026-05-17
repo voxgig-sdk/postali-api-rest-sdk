@@ -1,10 +1,10 @@
 package voxgigpostaliapirestsdk
 
 import (
-	"github.com/voxgig-sdk/postali-api-rest-sdk/core"
-	"github.com/voxgig-sdk/postali-api-rest-sdk/entity"
-	"github.com/voxgig-sdk/postali-api-rest-sdk/feature"
-	_ "github.com/voxgig-sdk/postali-api-rest-sdk/utility"
+	"github.com/voxgig-sdk/postali-api-rest-sdk/go/core"
+	"github.com/voxgig-sdk/postali-api-rest-sdk/go/entity"
+	"github.com/voxgig-sdk/postali-api-rest-sdk/go/feature"
+	_ "github.com/voxgig-sdk/postali-api-rest-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

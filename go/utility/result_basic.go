@@ -3,7 +3,7 @@ package utility
 import (
 	"fmt"
 
-	"github.com/voxgig-sdk/postali-api-rest-sdk/core"
+	"github.com/voxgig-sdk/postali-api-rest-sdk/go/core"
 )
 
 func resultBasicUtil(ctx *core.Context) *core.Result {

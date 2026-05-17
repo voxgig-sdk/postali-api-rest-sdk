@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/postali-api-rest-sdk/core"
+	"github.com/voxgig-sdk/postali-api-rest-sdk/go/core"
 )
 
 type BaseFeature struct {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/postali-api-rest-sdk"
-	"github.com/voxgig-sdk/postali-api-rest-sdk/core"
+	sdk "github.com/voxgig-sdk/postali-api-rest-sdk/go"
+	"github.com/voxgig-sdk/postali-api-rest-sdk/go/core"
 )
 
 func TestStateDirect(t *testing.T) {

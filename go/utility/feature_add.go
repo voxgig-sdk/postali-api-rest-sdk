@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/postali-api-rest-sdk/core"
+import "github.com/voxgig-sdk/postali-api-rest-sdk/go/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client
