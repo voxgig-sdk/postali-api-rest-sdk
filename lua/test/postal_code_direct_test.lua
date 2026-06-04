@@ -70,14 +70,12 @@ function postal_code_direct_setup(mockres)
   local env = runner.env_override({
     ["POSTALIAPIREST_TEST_POSTAL_CODE_ENTID"] = {},
     ["POSTALIAPIREST_TEST_LIVE"] = "FALSE",
-    ["POSTALIAPIREST_APIKEY"] = "NONE",
   })
 
   local live = env["POSTALIAPIREST_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["POSTALIAPIREST_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

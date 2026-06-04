@@ -66,14 +66,12 @@ def _municipality_direct_setup(mockres):
     env = runner.env_override({
         "POSTALIAPIREST_TEST_MUNICIPALITY_ENTID": {},
         "POSTALIAPIREST_TEST_LIVE": "FALSE",
-        "POSTALIAPIREST_APIKEY": "NONE",
     })
 
     live = env.get("POSTALIAPIREST_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("POSTALIAPIREST_APIKEY"),
         }
         client = PostaliApiRestSDK(merged_opts)
         return {

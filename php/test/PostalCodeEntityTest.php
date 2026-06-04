@@ -85,7 +85,6 @@ function postal_code_basic_setup($extra)
         "POSTALIAPIREST_TEST_POSTAL_CODE_ENTID" => $idmap,
         "POSTALIAPIREST_TEST_LIVE" => "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN" => "FALSE",
-        "POSTALIAPIREST_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function postal_code_basic_setup($extra)
     if ($env["POSTALIAPIREST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["POSTALIAPIREST_APIKEY"],
             ],
             $extra ?? [],
         ]);

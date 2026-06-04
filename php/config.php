@@ -20,9 +20,6 @@ class PostaliApiRestConfig
             ],
             "options" => [
                 "base" => "https://postali.app/api",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

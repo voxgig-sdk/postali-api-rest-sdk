@@ -91,7 +91,6 @@ def _municipality_basic_setup(extra):
         "POSTALIAPIREST_TEST_MUNICIPALITY_ENTID": idmap,
         "POSTALIAPIREST_TEST_LIVE": "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN": "FALSE",
-        "POSTALIAPIREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _municipality_basic_setup(extra):
     if env.get("POSTALIAPIREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("POSTALIAPIREST_APIKEY"),
             },
             extra or {},
         ])

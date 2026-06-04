@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'POSTALI_API_REST_TEST_MUNICIPALITY_ENTID': idmap,
     'POSTALI_API_REST_TEST_LIVE': 'FALSE',
     'POSTALI_API_REST_TEST_EXPLAIN': 'FALSE',
-    'POSTALI_API_REST_APIKEY': 'NONE',
   })
 
   idmap = env['POSTALI_API_REST_TEST_MUNICIPALITY_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new PostaliApiRestSDK(merge([
       {
-        apikey: env.POSTALI_API_REST_APIKEY,
       },
       extra
     ]))
