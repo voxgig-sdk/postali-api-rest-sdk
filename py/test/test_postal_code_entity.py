@@ -91,6 +91,7 @@ def _postal_code_basic_setup(extra):
         "POSTALIAPIREST_TEST_POSTAL_CODE_ENTID": idmap,
         "POSTALIAPIREST_TEST_LIVE": "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN": "FALSE",
+        "POSTALIAPIREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _postal_code_basic_setup(extra):
     if env.get("POSTALIAPIREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("POSTALIAPIREST_APIKEY"),
             },
             extra or {},
         ])

@@ -15,6 +15,9 @@ module PostaliApiRestConfig
       },
       "options" => {
         "base" => "https://postali.app/api",
+        "auth" => {
+          "prefix" => "Bearer",
+        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -28,36 +31,38 @@ module PostaliApiRestConfig
         "municipality" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "estado",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "municipio",
               "req" => false,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 1,
             },
           ],
           "name" => "municipality",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "example" => "Ciudad de México",
                         "kind" => "param",
                         "name" => "state",
                         "orig" => "state",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -76,11 +81,9 @@ module PostaliApiRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },
@@ -95,57 +98,59 @@ module PostaliApiRestConfig
         "postal_code" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "ciudad",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "codigo_postal",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 1,
             },
             {
+              "active" => true,
               "name" => "colonia",
               "req" => false,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 2,
             },
             {
+              "active" => true,
               "name" => "estado",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 3,
             },
             {
+              "active" => true,
               "name" => "municipio",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 4,
             },
           ],
           "name" => "postal_code",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "example" => "01000",
                         "kind" => "param",
                         "name" => "postal_code",
                         "orig" => "postal_code",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -169,11 +174,9 @@ module PostaliApiRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },
@@ -188,35 +191,35 @@ module PostaliApiRestConfig
         "state" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "estado",
               "req" => false,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 0,
             },
           ],
           "name" => "state",
           "op" => {
             "list" => {
+              "input" => "data",
               "name" => "list",
               "points" => [
                 {
+                  "active" => true,
+                  "args" => {},
                   "method" => "GET",
                   "orig" => "/estados",
                   "parts" => [
                     "estados",
                   ],
+                  "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "args" => {},
-                  "select" => {},
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "list",
             },
           },

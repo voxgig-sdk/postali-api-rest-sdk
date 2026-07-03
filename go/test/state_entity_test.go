@@ -119,6 +119,7 @@ func stateBasicSetup(extra map[string]any) *entityTestSetup {
 		"POSTALIAPIREST_TEST_STATE_ENTID": idmap,
 		"POSTALIAPIREST_TEST_LIVE":      "FALSE",
 		"POSTALIAPIREST_TEST_EXPLAIN":   "FALSE",
+		"POSTALIAPIREST_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["POSTALIAPIREST_TEST_STATE_ENTID"])
@@ -129,6 +130,7 @@ func stateBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["POSTALIAPIREST_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["POSTALIAPIREST_APIKEY"],
 			},
 			extra,
 		})

@@ -16,23 +16,7 @@ main: {
       ]
       title: "postali API REST"
       version: "1.0.0"
-      tagline: "Look up Mexican postal codes and resolve them to states, municipalities, and settlement names"
-      homepage: "https://postali.app/api"
-      docs_url: "https://postali.app/api"
-      about_md: `[postali](https://postali.app/api) is a REST API for retrieving Mexican postal code (codigo postal) information. Given a five-digit code, it returns the associated state, municipality, and settlement (colonia / neighborhood) records used in Mexican addresses.
-
-What you get from the API:
-
-- Postal-code lookups, e.g. \`/codigo-postal/{cp}.json\`, returning the matching state, municipality, and one or more settlement entries.
-- A search endpoint, \`/api/search?q={query}\`, for finding postal codes by settlement or place name.
-
-Operational notes: the API does not require authentication. CORS is not enabled on the public endpoints, so calls generally need to be made server-side. Availability has been reported as unreliable on community trackers, so callers should plan for retries and graceful degradation.`
-      entity_desc: {
-        municipality: "A Mexican municipality (municipio) within a state, returned as part of postal-code lookup responses alongside the settlement and state."
-        postal_code: "A Mexican five-digit postal code (codigo postal) record, retrievable at `/codigo-postal/{cp}.json` and searchable via `/api/search?q={query}`."
-        state: "A Mexican state (estado) associated with one or more postal codes, returned as part of postal-code lookup responses."
-      }
-      auth: false
     }
   }
 }
+

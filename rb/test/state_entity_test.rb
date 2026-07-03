@@ -83,6 +83,7 @@ def state_basic_setup(extra)
     "POSTALIAPIREST_TEST_STATE_ENTID" => idmap,
     "POSTALIAPIREST_TEST_LIVE" => "FALSE",
     "POSTALIAPIREST_TEST_EXPLAIN" => "FALSE",
+    "POSTALIAPIREST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,6 +95,7 @@ def state_basic_setup(extra)
   if env["POSTALIAPIREST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["POSTALIAPIREST_APIKEY"],
       },
       extra || {},
     ])

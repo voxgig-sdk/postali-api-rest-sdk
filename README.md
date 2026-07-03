@@ -1,19 +1,8 @@
 # PostaliApiRest SDK
 
-Look up Mexican postal codes and resolve them to states, municipalities, and settlement names
+postali API REST client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About postali API REST
-
-[postali](https://postali.app/api) is a REST API for retrieving Mexican postal code (codigo postal) information. Given a five-digit code, it returns the associated state, municipality, and settlement (colonia / neighborhood) records used in Mexican addresses.
-
-What you get from the API:
-
-- Postal-code lookups, e.g. `/codigo-postal/{cp}.json`, returning the matching state, municipality, and one or more settlement entries.
-- A search endpoint, `/api/search?q={query}`, for finding postal codes by settlement or place name.
-
-Operational notes: the API does not require authentication. CORS is not enabled on the public endpoints, so calls generally need to be made server-side. Availability has been reported as unreliable on community trackers, so callers should plan for retries and graceful degradation.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install postali-api-rest-sdk
 luarocks install postali-api-rest-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { PostaliApiRestSDK } from 'postali-api-rest'
 
-const client = new PostaliApiRestSDK({})
+const client = new PostaliApiRestSDK({
+  apikey: process.env.POSTALI-API-REST_APIKEY,
+})
 
+// Load municipality data
+const municipality = await client.Municipality().load({})
+console.log(municipality.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Municipality** | A Mexican municipality (municipio) within a state, returned as part of postal-code lookup responses alongside the settlement and state. | `/municipios/{state}` |
-| **PostalCode** | A Mexican five-digit postal code (codigo postal) record, retrievable at `/codigo-postal/{cp}.json` and searchable via `/api/search?q={query}`. | `/codigo_postal/{postalCode}` |
-| **State** | A Mexican state (estado) associated with one or more postal codes, returned as part of postal-code lookup responses. | `/estados` |
+| **Municipality** |  | `/municipios/{state}` |
+| **PostalCode** |  | `/codigo_postal/{postalCode}` |
+| **State** |  | `/estados` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -109,15 +102,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from postaliapirest_sdk import PostaliApiRestSDK
 
-client = PostaliApiRestSDK({})
+client = PostaliApiRestSDK({
+    "apikey": os.environ.get("POSTALI-API-REST_APIKEY"),
+})
 
 
 # Load a specific municipality
-municipality, err = client.Municipality(None).load(
-    {"id": "example_id"}, None
-)
+municipality, err = client.Municipality().load({"id": "example_id"})
+print(municipality)
 ```
 
 ### PHP
@@ -126,13 +121,14 @@ municipality, err = client.Municipality(None).load(
 <?php
 require_once 'postaliapirest_sdk.php';
 
-$client = new PostaliApiRestSDK([]);
+$client = new PostaliApiRestSDK([
+    "apikey" => getenv("POSTALI-API-REST_APIKEY"),
+]);
 
 
 // Load a specific municipality
-[$municipality, $err] = $client->Municipality(null)->load(
-    ["id" => "example_id"], null
-);
+[$municipality, $err] = $client->Municipality()->load(["id" => "example_id"]);
+print_r($municipality);
 ```
 
 ### Golang
@@ -140,8 +136,13 @@ $client = new PostaliApiRestSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/postali-api-rest-sdk/go"
 
-client := sdk.NewPostaliApiRestSDK(map[string]any{})
+client := sdk.NewPostaliApiRestSDK(map[string]any{
+    "apikey": os.Getenv("POSTALI-API-REST_APIKEY"),
+})
 
+// Load municipality data
+municipality, err := client.Municipality(nil).Load(map[string]any{}, nil)
+fmt.Println(municipality)
 ```
 
 ### Ruby
@@ -149,13 +150,14 @@ client := sdk.NewPostaliApiRestSDK(map[string]any{})
 ```ruby
 require_relative "PostaliApiRest_sdk"
 
-client = PostaliApiRestSDK.new({})
+client = PostaliApiRestSDK.new({
+  "apikey" => ENV["POSTALI-API-REST_APIKEY"],
+})
 
 
 # Load a specific municipality
-municipality, err = client.Municipality(nil).load(
-  { "id" => "example_id" }, nil
-)
+municipality, err = client.Municipality().load({ "id" => "example_id" })
+puts municipality
 ```
 
 ### Lua
@@ -163,13 +165,14 @@ municipality, err = client.Municipality(nil).load(
 ```lua
 local sdk = require("postali-api-rest_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("POSTALI-API-REST_APIKEY"),
+})
 
 
 -- Load a specific municipality
-local municipality, err = client:Municipality(nil):load(
-  { id = "example_id" }, nil
-)
+local municipality, err = client:Municipality():load({ id = "example_id" })
+print(municipality)
 ```
 
 ## Unit testing in offline mode
@@ -188,25 +191,21 @@ const result = await client.Municipality().load({ id: 'test01' })
 ### Python
 
 ```python
-client = PostaliApiRestSDK.test(None, None)
-result, err = client.Municipality(None).load(
-    {"id": "test01"}, None
-)
+client = PostaliApiRestSDK.test()
+result, err = client.Municipality().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = PostaliApiRestSDK::test(null, null);
-[$result, $err] = $client->Municipality(null)->load(
-    ["id" => "test01"], null
-);
+$client = PostaliApiRestSDK::test();
+[$result, $err] = $client->Municipality()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Municipality(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -215,19 +214,15 @@ result, err := client.Municipality(nil).Load(
 ### Ruby
 
 ```ruby
-client = PostaliApiRestSDK.test(nil, nil)
-result, err = client.Municipality(nil).load(
-  { "id" => "test01" }, nil
-)
+client = PostaliApiRestSDK.test
+result, err = client.Municipality().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Municipality(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Municipality():load({ id = "test01" })
 ```
 
 ## How it works
@@ -331,10 +326,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the postali API REST
-
-- Upstream: [https://postali.app/api](https://postali.app/api)
 
 ---
 

@@ -110,12 +110,14 @@ func postal_codeDirectSetup(mockres any) *postal_codeDirectSetupResult {
 	env := envOverride(map[string]any{
 		"POSTALIAPIREST_TEST_POSTAL_CODE_ENTID": map[string]any{},
 		"POSTALIAPIREST_TEST_LIVE":    "FALSE",
+		"POSTALIAPIREST_APIKEY":       "NONE",
 	})
 
 	live := env["POSTALIAPIREST_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["POSTALIAPIREST_APIKEY"],
 		}
 		client := sdk.NewPostaliApiRestSDK(mergedOpts)
 
