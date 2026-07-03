@@ -8,12 +8,14 @@ source = {
   dir = "postali-api-rest-sdk/lua"
 }
 description = {
-  summary = "PostaliApiRest SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the postali API REST public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/postali-api-rest-sdk",
+  issues_url = "https://github.com/voxgig-sdk/postali-api-rest-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "postali-api-rest" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

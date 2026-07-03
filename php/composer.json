@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/postali-api-rest",
-  "description": "PostaliApiRest SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the postali API REST public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "postali-api-rest"],
+  "homepage": "https://github.com/voxgig-sdk/postali-api-rest-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/postali-api-rest-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/postali-api-rest-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

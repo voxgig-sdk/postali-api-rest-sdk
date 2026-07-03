@@ -10,7 +10,7 @@ The PHP SDK for the PostaliApiRest API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/postali-api-rest-sdk
+composer require voxgig-sdk/postali-api-rest
 ```
 
 

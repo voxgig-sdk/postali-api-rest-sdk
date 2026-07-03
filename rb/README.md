@@ -10,13 +10,13 @@ The Ruby SDK for the PostaliApiRest API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install postali-api-rest-sdk
+gem install voxgig-sdk-postali-api-rest
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "postali-api-rest-sdk"
+gem "voxgig-sdk-postali-api-rest"
 ```
 
 Then run:

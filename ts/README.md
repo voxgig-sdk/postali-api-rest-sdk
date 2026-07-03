@@ -10,7 +10,7 @@ The TypeScript SDK for the PostaliApiRest API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install postali-api-rest
+npm install @voxgig-sdk/postali-api-rest
 ```
 ## Tutorial: your first API call
 

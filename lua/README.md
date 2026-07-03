@@ -10,7 +10,7 @@ The Lua SDK for the PostaliApiRest API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install postali-api-rest-sdk
+luarocks install voxgig-sdk-postali-api-rest
 ```
 
 If the module is not yet published, add the source directory to

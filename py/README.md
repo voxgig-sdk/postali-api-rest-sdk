@@ -10,7 +10,7 @@ The Python SDK for the PostaliApiRest API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install postali-api-rest-sdk
+pip install voxgig-sdk-postali-api-rest
 ```
 
 Or install from source:
