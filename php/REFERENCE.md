@@ -93,7 +93,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## MunicipalityEntity
 
 ```php
-$municipality = $client->municipality();
+$municipality = $client->Municipality();
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ $municipality = $client->municipality();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->municipality()->load(["id" => "municipality_id"]);
+$result = $client->Municipality()->load(["id" => "municipality_id"]);
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```php
-$postal_code = $client->postal_code();
+$postal_code = $client->PostalCode();
 ```
 
 ### Fields
@@ -166,7 +166,7 @@ $postal_code = $client->postal_code();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->postal_code()->load(["id" => "postal_code_id"]);
+$result = $client->PostalCode()->load(["id" => "postal_code_id"]);
 ```
 
 ### Common Methods
@@ -202,7 +202,7 @@ Return the entity name.
 ## StateEntity
 
 ```php
-$state = $client->state();
+$state = $client->State();
 ```
 
 ### Fields
@@ -218,7 +218,7 @@ $state = $client->state();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->state()->list([]);
+$results = $client->State()->list([]);
 ```
 
 ### Common Methods

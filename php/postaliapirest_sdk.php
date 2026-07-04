@@ -233,10 +233,10 @@ class PostaliApiRestSDK
 
     private $_municipality = null;
 
-    // Idiomatic facade: $client->municipality()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Municipality() (PHP method
-    // names are case-insensitive).
-    public function municipality($data = null)
+    // Canonical facade: $client->Municipality()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->municipality()
+    // resolves here too.
+    public function Municipality($data = null)
     {
         require_once __DIR__ . '/entity/municipality_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class PostaliApiRestSDK
 
     private $_postal_code = null;
 
-    // Idiomatic facade: $client->postal_code()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias PostalCode() (PHP method
-    // names are case-insensitive).
-    public function postal_code($data = null)
+    // Canonical facade: $client->PostalCode()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->postal_code()
+    // resolves here too.
+    public function PostalCode($data = null)
     {
         require_once __DIR__ . '/entity/postal_code_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class PostaliApiRestSDK
 
     private $_state = null;
 
-    // Idiomatic facade: $client->state()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias State() (PHP method
-    // names are case-insensitive).
-    public function state($data = null)
+    // Canonical facade: $client->State()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->state()
+    // resolves here too.
+    public function State($data = null)
     {
         require_once __DIR__ . '/entity/state_entity.php';
         if ($data === null) {

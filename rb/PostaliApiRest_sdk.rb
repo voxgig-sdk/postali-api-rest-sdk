@@ -208,39 +208,21 @@ class PostaliApiRestSDK
   end
 
 
-  # Idiomatic facade: client.municipality.list / client.municipality.load({ "id" => ... })
-  def municipality
-    require_relative 'entity/municipality_entity'
-    @municipality ||= MunicipalityEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.municipality instead.
+  # Canonical facade: client.Municipality.list / client.Municipality.load({ "id" => ... })
   def Municipality(data = nil)
     require_relative 'entity/municipality_entity'
     MunicipalityEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.postal_code.list / client.postal_code.load({ "id" => ... })
-  def postal_code
-    require_relative 'entity/postal_code_entity'
-    @postal_code ||= PostalCodeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.postal_code instead.
+  # Canonical facade: client.PostalCode.list / client.PostalCode.load({ "id" => ... })
   def PostalCode(data = nil)
     require_relative 'entity/postal_code_entity'
     PostalCodeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.state.list / client.state.load({ "id" => ... })
-  def state
-    require_relative 'entity/state_entity'
-    @state ||= StateEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.state instead.
+  # Canonical facade: client.State.list / client.State.load({ "id" => ... })
   def State(data = nil)
     require_relative 'entity/state_entity'
     StateEntity.new(self, data)

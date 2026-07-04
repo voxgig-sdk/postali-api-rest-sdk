@@ -4,44 +4,42 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Municipality:
-    estado: Optional[str] = None
-    municipio: Optional[list] = None
+class Municipality(TypedDict, total=False):
+    estado: str
+    municipio: list
 
 
-@dataclass
-class MunicipalityLoadMatch:
+class MunicipalityLoadMatch(TypedDict):
     state: str
 
 
-@dataclass
-class PostalCode:
-    ciudad: Optional[str] = None
-    codigo_postal: Optional[str] = None
-    colonia: Optional[list] = None
-    estado: Optional[str] = None
-    municipio: Optional[str] = None
+class PostalCode(TypedDict, total=False):
+    ciudad: str
+    codigo_postal: str
+    colonia: list
+    estado: str
+    municipio: str
 
 
-@dataclass
-class PostalCodeLoadMatch:
+class PostalCodeLoadMatch(TypedDict):
     postal_code: str
 
 
-@dataclass
-class State:
-    estado: Optional[list] = None
+class State(TypedDict, total=False):
+    estado: list
 
 
-@dataclass
-class StateListMatch:
-    estado: Optional[list] = None
-
+class StateListMatch(TypedDict, total=False):
+    estado: list

@@ -33,9 +33,10 @@ $client = new PostaliApiRestSDK();
 
 ```php
 try {
-    $result = $client->municipality()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Municipality record (throws on error).
+    $municipality = $client->Municipality()->load(["id" => "example_id"]);
+    print_r($municipality);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = PostaliApiRestSDK::test();
+$client = PostaliApiRestSDK::test([
+    "entity" => ["municipality" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->municipality()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$municipality = $client->Municipality()->load(["id" => "test01"]);
+print_r($municipality);
 ```
 
 ### Use a custom fetch function
@@ -250,7 +255,7 @@ API path: `/estados`
 
 ### Municipality
 
-Create an instance: `const municipality = client.municipality`
+Create an instance: `$municipality = $client->Municipality();`
 
 #### Operations
 
@@ -267,14 +272,15 @@ Create an instance: `const municipality = client.municipality`
 
 #### Example: Load
 
-```ts
-const municipality = await client.municipality.load({ id: 'municipality_id' })
+```php
+// load() returns the bare Municipality record (throws on error).
+$municipality = $client->Municipality()->load(["id" => "municipality_id"]);
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.postal_code`
+Create an instance: `$postal_code = $client->PostalCode();`
 
 #### Operations
 
@@ -294,14 +300,15 @@ Create an instance: `const postal_code = client.postal_code`
 
 #### Example: Load
 
-```ts
-const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
+```php
+// load() returns the bare PostalCode record (throws on error).
+$postal_code = $client->PostalCode()->load(["id" => "postal_code_id"]);
 ```
 
 
 ### State
 
-Create an instance: `const state = client.state`
+Create an instance: `$state = $client->State();`
 
 #### Operations
 
@@ -317,8 +324,9 @@ Create an instance: `const state = client.state`
 
 #### Example: List
 
-```ts
-const states = await client.state.list()
+```php
+// list() returns an array of State records (throws on error).
+$states = $client->State()->list();
 ```
 
 
@@ -393,7 +401,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$municipality = $client->municipality();
+$municipality = $client->Municipality();
 $municipality->load(["id" => "example_id"]);
 
 // $municipality->dataGet() now returns the loaded municipality data

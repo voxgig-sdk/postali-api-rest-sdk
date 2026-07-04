@@ -133,7 +133,7 @@ Alias for `PostaliApiRestSDK.test()`.
 ## MunicipalityEntity
 
 ```ts
-const municipality = client.municipality
+const municipality = client.Municipality()
 ```
 
 ### Fields
@@ -150,7 +150,7 @@ const municipality = client.municipality
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.municipality.load({ id: 'municipality_id' })
+const result = await client.Municipality().load({ id: 'municipality_id' })
 ```
 
 ### Common Methods
@@ -184,7 +184,7 @@ Return a copy of the entity options.
 ## PostalCodeEntity
 
 ```ts
-const postal_code = client.postal_code
+const postal_code = client.PostalCode()
 ```
 
 ### Fields
@@ -204,7 +204,7 @@ const postal_code = client.postal_code
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.postal_code.load({ id: 'postal_code_id' })
+const result = await client.PostalCode().load({ id: 'postal_code_id' })
 ```
 
 ### Common Methods
@@ -238,7 +238,7 @@ Return a copy of the entity options.
 ## StateEntity
 
 ```ts
-const state = client.state
+const state = client.State()
 ```
 
 ### Fields
@@ -254,7 +254,7 @@ const state = client.state
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.state.list()
+const results = await client.State().list()
 ```
 
 ### Common Methods

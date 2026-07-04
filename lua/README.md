@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a municipality
 
 ```lua
-local result, err = client:municipality():load({ id = "example_id" })
+local municipality, err = client:Municipality():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(municipality)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:municipality():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Municipality():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -185,17 +185,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local municipality, err = client:Municipality():load({ id = "example_id" })
+    if err then error(err) end
+    -- municipality is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -241,7 +246,7 @@ API path: `/estados`
 
 ### Municipality
 
-Create an instance: `const municipality = client.municipality`
+Create an instance: `local municipality = client:Municipality(nil)`
 
 #### Operations
 
@@ -258,14 +263,14 @@ Create an instance: `const municipality = client.municipality`
 
 #### Example: Load
 
-```ts
-const municipality = await client.municipality.load({ id: 'municipality_id' })
+```lua
+local municipality, err = client:Municipality():load({ id = "municipality_id" })
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.postal_code`
+Create an instance: `local postal_code = client:PostalCode(nil)`
 
 #### Operations
 
@@ -285,14 +290,14 @@ Create an instance: `const postal_code = client.postal_code`
 
 #### Example: Load
 
-```ts
-const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
+```lua
+local postal_code, err = client:PostalCode():load({ id = "postal_code_id" })
 ```
 
 
 ### State
 
-Create an instance: `const state = client.state`
+Create an instance: `local state = client:State(nil)`
 
 #### Operations
 
@@ -308,8 +313,8 @@ Create an instance: `const state = client.state`
 
 #### Example: List
 
-```ts
-const states = await client.state.list()
+```lua
+local states, err = client:State():list()
 ```
 
 
@@ -384,7 +389,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local municipality = client:municipality()
+local municipality = client:Municipality()
 municipality:load({ id = "example_id" })
 
 -- municipality:data_get() now returns the loaded municipality data

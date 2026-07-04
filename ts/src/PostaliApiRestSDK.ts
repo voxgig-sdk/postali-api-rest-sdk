@@ -206,42 +206,21 @@ class PostaliApiRestSDK {
 
 
 
-  _municipality?: MunicipalityEntity
-
-  // Idiomatic facade: `client.municipality.list()` / `client.municipality.load({ id })`.
-  get municipality(): MunicipalityEntity {
-    return (this._municipality ??= new MunicipalityEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.municipality` instead. */
+  // Entity access: `client.Municipality().list()` / `client.Municipality().load({ id })`.
   Municipality(data?: any) {
     const self = this
     return new MunicipalityEntity(self,data)
   }
 
 
-  _postal_code?: PostalCodeEntity
-
-  // Idiomatic facade: `client.postal_code.list()` / `client.postal_code.load({ id })`.
-  get postal_code(): PostalCodeEntity {
-    return (this._postal_code ??= new PostalCodeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.postal_code` instead. */
+  // Entity access: `client.PostalCode().list()` / `client.PostalCode().load({ id })`.
   PostalCode(data?: any) {
     const self = this
     return new PostalCodeEntity(self,data)
   }
 
 
-  _state?: StateEntity
-
-  // Idiomatic facade: `client.state.list()` / `client.state.load({ id })`.
-  get state(): StateEntity {
-    return (this._state ??= new StateEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.state` instead. */
+  // Entity access: `client.State().list()` / `client.State().load({ id })`.
   State(data?: any) {
     const self = this
     return new StateEntity(self,data)

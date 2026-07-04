@@ -33,10 +33,12 @@ client = PostaliApiRestSDK()
 
 ### 3. Load a municipality
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.municipality.load({"id": "example_id"})
-    print(result)
+    municipality = client.Municipality().load({"id": "example_id"})
+    print(municipality)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = PostaliApiRestSDK.test()
 
-result = client.municipality.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+municipality = client.Municipality().load({"id": "test01"})
+# municipality contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -245,7 +248,7 @@ API path: `/estados`
 
 ### Municipality
 
-Create an instance: `const municipality = client.municipality`
+Create an instance: `municipality = client.Municipality()`
 
 #### Operations
 
@@ -262,14 +265,14 @@ Create an instance: `const municipality = client.municipality`
 
 #### Example: Load
 
-```ts
-const municipality = await client.municipality.load({ id: 'municipality_id' })
+```python
+municipality = client.Municipality().load({"id": "municipality_id"})
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.postal_code`
+Create an instance: `postal_code = client.PostalCode()`
 
 #### Operations
 
@@ -289,14 +292,14 @@ Create an instance: `const postal_code = client.postal_code`
 
 #### Example: Load
 
-```ts
-const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
+```python
+postal_code = client.PostalCode().load({"id": "postal_code_id"})
 ```
 
 
 ### State
 
-Create an instance: `const state = client.state`
+Create an instance: `state = client.State()`
 
 #### Operations
 
@@ -312,8 +315,8 @@ Create an instance: `const state = client.state`
 
 #### Example: List
 
-```ts
-const states = await client.state.list()
+```python
+states = client.State().list({})
 ```
 
 
@@ -387,7 +390,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-municipality = client.municipality
+municipality = client.Municipality()
 municipality.load({"id": "example_id"})
 
 # municipality.data_get() now returns the loaded municipality data

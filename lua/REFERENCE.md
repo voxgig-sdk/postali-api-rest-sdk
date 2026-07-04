@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## MunicipalityEntity
 
 ```lua
-local municipality = client:municipality(nil)
+local municipality = client:Municipality(nil)
 ```
 
 ### Fields
@@ -108,7 +108,7 @@ local municipality = client:municipality(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:municipality():load({ id = "municipality_id" })
+local result, err = client:Municipality():load({ id = "municipality_id" })
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```lua
-local postal_code = client:postal_code(nil)
+local postal_code = client:PostalCode(nil)
 ```
 
 ### Fields
@@ -164,7 +164,7 @@ local postal_code = client:postal_code(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:postal_code():load({ id = "postal_code_id" })
+local result, err = client:PostalCode():load({ id = "postal_code_id" })
 ```
 
 ### Common Methods
@@ -200,7 +200,7 @@ Return the entity name.
 ## StateEntity
 
 ```lua
-local state = client:state(nil)
+local state = client:State(nil)
 ```
 
 ### Fields
@@ -216,7 +216,7 @@ local state = client:state(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:state():list()
+local results, err = client:State():list()
 ```
 
 ### Common Methods

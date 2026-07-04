@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## MunicipalityEntity
 
 ```python
-municipality = client.municipality
+municipality = client.Municipality()
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ municipality = client.municipality
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.municipality.load({"id": "municipality_id"})
+result = client.Municipality().load({"id": "municipality_id"})
 ```
 
 ### Common Methods
@@ -140,7 +140,7 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```python
-postal_code = client.postal_code
+postal_code = client.PostalCode()
 ```
 
 ### Fields
@@ -160,7 +160,7 @@ postal_code = client.postal_code
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.postal_code.load({"id": "postal_code_id"})
+result = client.PostalCode().load({"id": "postal_code_id"})
 ```
 
 ### Common Methods
@@ -195,7 +195,7 @@ Return the entity name.
 ## StateEntity
 
 ```python
-state = client.state
+state = client.State()
 ```
 
 ### Fields
@@ -211,7 +211,9 @@ state = client.state
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.state.list({})
+results = client.State().list({})
+for state in results:
+    print(state)
 ```
 
 ### Common Methods

@@ -94,7 +94,7 @@ same parameters as `direct()`. Raises on error.
 ## MunicipalityEntity
 
 ```ruby
-municipality = client.municipality
+municipality = client.Municipality
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ municipality = client.municipality
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.municipality.load({ "id" => "municipality_id" })
+result = client.Municipality.load({ "id" => "municipality_id" })
 ```
 
 ### Common Methods
@@ -147,7 +147,7 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```ruby
-postal_code = client.postal_code
+postal_code = client.PostalCode
 ```
 
 ### Fields
@@ -167,7 +167,7 @@ postal_code = client.postal_code
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.postal_code.load({ "id" => "postal_code_id" })
+result = client.PostalCode.load({ "id" => "postal_code_id" })
 ```
 
 ### Common Methods
@@ -203,7 +203,7 @@ Return the entity name.
 ## StateEntity
 
 ```ruby
-state = client.state
+state = client.State
 ```
 
 ### Fields
@@ -219,7 +219,7 @@ state = client.state
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.state.list(nil)
+results = client.State.list(nil)
 ```
 
 ### Common Methods

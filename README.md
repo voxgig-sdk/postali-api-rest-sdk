@@ -26,9 +26,9 @@ import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest'
 
 const client = new PostaliApiRestSDK()
 
-// Load municipality data
-const municipality = await client.municipality.load({})
-console.log(municipality.data)
+// Load municipality data (returns a Municipality)
+const municipality = await client.Municipality().load()
+console.log(municipality)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -86,8 +86,8 @@ from postaliapirest_sdk import PostaliApiRestSDK
 client = PostaliApiRestSDK()
 
 
-# Load a specific municipality
-municipality = client.municipality.load({"id": "example_id"})
+# Load a specific municipality (returns the record, raises on error)
+municipality = client.Municipality().load({"id": "example_id"})
 print(municipality)
 ```
 
@@ -100,8 +100,8 @@ require_once 'postaliapirest_sdk.php';
 $client = new PostaliApiRestSDK();
 
 
-// Load a specific municipality
-$municipality = $client->municipality()->load(["id" => "example_id"]);
+// Load a specific municipality (returns the bare record; throws on error)
+$municipality = $client->Municipality()->load(["id" => "example_id"]);
 print_r($municipality);
 ```
 
@@ -125,8 +125,8 @@ require_relative "PostaliApiRest_sdk"
 client = PostaliApiRestSDK.new
 
 
-# Load a specific municipality
-municipality = client.municipality.load({ "id" => "example_id" })
+# Load a specific municipality (returns the bare record; raises on error)
+municipality = client.Municipality.load({ "id" => "example_id" })
 puts municipality
 ```
 
@@ -139,7 +139,7 @@ local client = sdk.new()
 
 
 -- Load a specific municipality
-local municipality, err = client:municipality():load({ id = "example_id" })
+local municipality, err = client:Municipality():load({ id = "example_id" })
 print(municipality)
 ```
 
@@ -152,22 +152,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = PostaliApiRestSDK.test()
-const result = await client.municipality.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const municipality = await client.Municipality().load({ id: 'test01' })
+// municipality is a bare Municipality populated with mock data
+console.log(municipality)
 ```
 
 ### Python
 
 ```python
 client = PostaliApiRestSDK.test()
-result = client.municipality.load({"id": "test01"})
+municipality = client.Municipality().load({"id": "test01"})
+print(municipality)
 ```
 
 ### PHP
 
 ```php
-$client = PostaliApiRestSDK::test();
-$result = $client->municipality()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = PostaliApiRestSDK::test([
+    "entity" => ["municipality" => ["test01" => ["id" => "test01"]]],
+]);
+$municipality = $client->Municipality()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -182,15 +187,18 @@ result, err := client.Municipality(nil).Load(
 ### Ruby
 
 ```ruby
-client = PostaliApiRestSDK.test
-result = client.municipality.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = PostaliApiRestSDK.test({
+  "entity" => { "municipality" => { "test01" => { "id" => "test01" } } },
+})
+municipality = client.Municipality.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:municipality():load({ id = "test01" })
+local result, err = client:Municipality():load({ id = "test01" })
 ```
 
 ## How it works
@@ -238,6 +246,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

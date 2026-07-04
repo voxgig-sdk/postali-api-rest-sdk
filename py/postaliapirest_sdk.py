@@ -220,57 +220,27 @@ class PostaliApiRestSDK:
         }
 
 
-    @property
-    def municipality(self):
-        """Idiomatic facade: client.municipality.list() / client.municipality.load({"id": ...})."""
-        from entity.municipality_entity import MunicipalityEntity
-        cached = getattr(self, "_municipality", None)
-        if cached is None:
-            cached = MunicipalityEntity(self, None)
-            self._municipality = cached
-        return cached
-
-    def Municipality(self, data=None):
-        # Deprecated: use client.municipality instead.
+    def Municipality(self, data=None) -> "MunicipalityEntity":
+        """Entity factory: client.Municipality().list({}) / client.Municipality().load({"id": ...})."""
         from entity.municipality_entity import MunicipalityEntity
         return MunicipalityEntity(self, data)
 
 
-    @property
-    def postal_code(self):
-        """Idiomatic facade: client.postal_code.list() / client.postal_code.load({"id": ...})."""
-        from entity.postal_code_entity import PostalCodeEntity
-        cached = getattr(self, "_postal_code", None)
-        if cached is None:
-            cached = PostalCodeEntity(self, None)
-            self._postal_code = cached
-        return cached
-
-    def PostalCode(self, data=None):
-        # Deprecated: use client.postal_code instead.
+    def PostalCode(self, data=None) -> "PostalCodeEntity":
+        """Entity factory: client.PostalCode().list({}) / client.PostalCode().load({"id": ...})."""
         from entity.postal_code_entity import PostalCodeEntity
         return PostalCodeEntity(self, data)
 
 
-    @property
-    def state(self):
-        """Idiomatic facade: client.state.list() / client.state.load({"id": ...})."""
-        from entity.state_entity import StateEntity
-        cached = getattr(self, "_state", None)
-        if cached is None:
-            cached = StateEntity(self, None)
-            self._state = cached
-        return cached
-
-    def State(self, data=None):
-        # Deprecated: use client.state instead.
+    def State(self, data=None) -> "StateEntity":
+        """Entity factory: client.State().list({}) / client.State().load({"id": ...})."""
         from entity.state_entity import StateEntity
         return StateEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "PostaliApiRestSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class PostaliApiRestSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.municipality_entity import MunicipalityEntity
+    from entity.postal_code_entity import PostalCodeEntity
+    from entity.state_entity import StateEntity
