@@ -49,8 +49,7 @@ class PostalCodeEntityTest extends TestCase
         // LOAD
         $postal_code_ref01_ent = $client->PostalCode(null);
         $postal_code_ref01_match_dt0 = [];
-        [$postal_code_ref01_data_dt0_loaded, $err] = $postal_code_ref01_ent->load($postal_code_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $postal_code_ref01_data_dt0_loaded = $postal_code_ref01_ent->load($postal_code_ref01_match_dt0, null);
         $this->assertNotNull($postal_code_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function postal_code_basic_setup($extra)
         "POSTALIAPIREST_TEST_POSTAL_CODE_ENTID" => $idmap,
         "POSTALIAPIREST_TEST_LIVE" => "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN" => "FALSE",
-        "POSTALIAPIREST_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function postal_code_basic_setup($extra)
     if ($env["POSTALIAPIREST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["POSTALIAPIREST_APIKEY"],
             ],
             $extra ?? [],
         ]);

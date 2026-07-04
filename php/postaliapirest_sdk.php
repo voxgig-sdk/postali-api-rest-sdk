@@ -103,7 +103,7 @@ class PostaliApiRestSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class PostaliApiRestSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class PostaliApiRestSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,38 +216,71 @@ class PostaliApiRestSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Municipality($data = null)
+    private $_municipality = null;
+
+    // Idiomatic facade: $client->municipality()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Municipality() (PHP method
+    // names are case-insensitive).
+    public function municipality($data = null)
     {
         require_once __DIR__ . '/entity/municipality_entity.php';
+        if ($data === null) {
+            if ($this->_municipality === null) {
+                $this->_municipality = new MunicipalityEntity($this, null);
+            }
+            return $this->_municipality;
+        }
         return new MunicipalityEntity($this, $data);
     }
 
 
-    public function PostalCode($data = null)
+    private $_postal_code = null;
+
+    // Idiomatic facade: $client->postal_code()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias PostalCode() (PHP method
+    // names are case-insensitive).
+    public function postal_code($data = null)
     {
         require_once __DIR__ . '/entity/postal_code_entity.php';
+        if ($data === null) {
+            if ($this->_postal_code === null) {
+                $this->_postal_code = new PostalCodeEntity($this, null);
+            }
+            return $this->_postal_code;
+        }
         return new PostalCodeEntity($this, $data);
     }
 
 
-    public function State($data = null)
+    private $_state = null;
+
+    // Idiomatic facade: $client->state()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias State() (PHP method
+    // names are case-insensitive).
+    public function state($data = null)
     {
         require_once __DIR__ . '/entity/state_entity.php';
+        if ($data === null) {
+            if ($this->_state === null) {
+                $this->_state = new StateEntity($this, null);
+            }
+            return $this->_state;
+        }
         return new StateEntity($this, $data);
     }
 

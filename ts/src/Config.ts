@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://postali.app/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -96,7 +92,8 @@ class Config {
                     "name": "state",
                     "orig": "state",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -184,7 +181,8 @@ class Config {
                     "name": "postal_code",
                     "orig": "postal_code",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

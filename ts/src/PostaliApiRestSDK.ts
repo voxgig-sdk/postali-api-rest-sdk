@@ -4,6 +4,8 @@ import { MunicipalityEntity } from './entity/MunicipalityEntity'
 import { PostalCodeEntity } from './entity/PostalCodeEntity'
 import { StateEntity } from './entity/StateEntity'
 
+export type * from './PostaliApiRestTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class PostaliApiRestSDK {
 
 
 
+  _municipality?: MunicipalityEntity
+
+  // Idiomatic facade: `client.municipality.list()` / `client.municipality.load({ id })`.
+  get municipality(): MunicipalityEntity {
+    return (this._municipality ??= new MunicipalityEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.municipality` instead. */
   Municipality(data?: any) {
     const self = this
     return new MunicipalityEntity(self,data)
   }
 
 
+  _postal_code?: PostalCodeEntity
+
+  // Idiomatic facade: `client.postal_code.list()` / `client.postal_code.load({ id })`.
+  get postal_code(): PostalCodeEntity {
+    return (this._postal_code ??= new PostalCodeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.postal_code` instead. */
   PostalCode(data?: any) {
     const self = this
     return new PostalCodeEntity(self,data)
   }
 
 
+  _state?: StateEntity
+
+  // Idiomatic facade: `client.state.list()` / `client.state.load({ id })`.
+  get state(): StateEntity {
+    return (this._state ??= new StateEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.state` instead. */
   State(data?: any) {
     const self = this
     return new StateEntity(self,data)

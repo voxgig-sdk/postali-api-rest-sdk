@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Municipality,
+  MunicipalityLoadMatch,
+} from '../PostaliApiRestTypes'
 
 // TODO: needs Entity superclass
-class MunicipalityEntity extends PostaliApiRestEntityBase {
+class MunicipalityEntity extends PostaliApiRestEntityBase<Municipality> {
 
   constructor(client: PostaliApiRestSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class MunicipalityEntity extends PostaliApiRestEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: MunicipalityLoadMatch, ctrl?: Control): Promise<Municipality> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class MunicipalityEntity extends PostaliApiRestEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Municipality> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

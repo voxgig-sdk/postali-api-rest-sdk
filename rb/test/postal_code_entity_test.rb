@@ -42,8 +42,7 @@ class PostalCodeEntityTest < Minitest::Test
     # LOAD
     postal_code_ref01_ent = client.PostalCode(nil)
     postal_code_ref01_match_dt0 = {}
-    postal_code_ref01_data_dt0_loaded, err = postal_code_ref01_ent.load(postal_code_ref01_match_dt0, nil)
-    assert_nil err
+    postal_code_ref01_data_dt0_loaded = postal_code_ref01_ent.load(postal_code_ref01_match_dt0, nil)
     assert !postal_code_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def postal_code_basic_setup(extra)
     "POSTALIAPIREST_TEST_POSTAL_CODE_ENTID" => idmap,
     "POSTALIAPIREST_TEST_LIVE" => "FALSE",
     "POSTALIAPIREST_TEST_EXPLAIN" => "FALSE",
-    "POSTALIAPIREST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def postal_code_basic_setup(extra)
   if env["POSTALIAPIREST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["POSTALIAPIREST_APIKEY"],
       },
       extra || {},
     ])

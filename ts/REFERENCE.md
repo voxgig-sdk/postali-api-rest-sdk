@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -134,7 +133,7 @@ Alias for `PostaliApiRestSDK.test()`.
 ## MunicipalityEntity
 
 ```ts
-const municipality = client.Municipality()
+const municipality = client.municipality
 ```
 
 ### Fields
@@ -151,7 +150,7 @@ const municipality = client.Municipality()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Municipality().load({ id: 'municipality_id' })
+const result = await client.municipality.load({ id: 'municipality_id' })
 ```
 
 ### Common Methods
@@ -185,7 +184,7 @@ Return a copy of the entity options.
 ## PostalCodeEntity
 
 ```ts
-const postal_code = client.PostalCode()
+const postal_code = client.postal_code
 ```
 
 ### Fields
@@ -205,7 +204,7 @@ const postal_code = client.PostalCode()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PostalCode().load({ id: 'postal_code_id' })
+const result = await client.postal_code.load({ id: 'postal_code_id' })
 ```
 
 ### Common Methods
@@ -239,7 +238,7 @@ Return a copy of the entity options.
 ## StateEntity
 
 ```ts
-const state = client.State()
+const state = client.state
 ```
 
 ### Fields
@@ -255,7 +254,7 @@ const state = client.State()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.State().list()
+const results = await client.state.list()
 ```
 
 ### Common Methods

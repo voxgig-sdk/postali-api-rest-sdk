@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:municipality():list() / client:municipality():load({ id = ... })
+function PostaliApiRestSDK:municipality(data)
+  local EntityMod = require("entity.municipality_entity")
+  if data == nil then
+    if self._municipality == nil then
+      self._municipality = EntityMod.new(self, nil)
+    end
+    return self._municipality
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:municipality() instead.
 function PostaliApiRestSDK:Municipality(data)
   local EntityMod = require("entity.municipality_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:postal_code():list() / client:postal_code():load({ id = ... })
+function PostaliApiRestSDK:postal_code(data)
+  local EntityMod = require("entity.postal_code_entity")
+  if data == nil then
+    if self._postal_code == nil then
+      self._postal_code = EntityMod.new(self, nil)
+    end
+    return self._postal_code
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:postal_code() instead.
 function PostaliApiRestSDK:PostalCode(data)
   local EntityMod = require("entity.postal_code_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:state():list() / client:state():load({ id = ... })
+function PostaliApiRestSDK:state(data)
+  local EntityMod = require("entity.state_entity")
+  if data == nil then
+    if self._state == nil then
+      self._state = EntityMod.new(self, nil)
+    end
+    return self._state
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:state() instead.
 function PostaliApiRestSDK:State(data)
   local EntityMod = require("entity.state_entity")
   return EntityMod.new(self, data)

@@ -45,6 +45,7 @@ class PostalCodeEntity
     end
   end
 
+  # @return [PostalCode, Hash] the current PostalCode data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class PostalCodeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of PostalCode fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single PostalCode.
+  #
+  # @param reqmatch [PostalCodeLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [PostalCode, Hash] the loaded PostalCode; raises PostaliApiRestError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

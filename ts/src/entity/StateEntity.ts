@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  State,
+  StateListMatch,
+} from '../PostaliApiRestTypes'
 
 // TODO: needs Entity superclass
-class StateEntity extends PostaliApiRestEntityBase {
+class StateEntity extends PostaliApiRestEntityBase<State> {
 
   constructor(client: PostaliApiRestSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class StateEntity extends PostaliApiRestEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: StateListMatch, ctrl?: Control): Promise<State[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class StateEntity extends PostaliApiRestEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<State[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

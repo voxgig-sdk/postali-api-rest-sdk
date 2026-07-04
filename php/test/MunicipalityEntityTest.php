@@ -49,8 +49,7 @@ class MunicipalityEntityTest extends TestCase
         // LOAD
         $municipality_ref01_ent = $client->Municipality(null);
         $municipality_ref01_match_dt0 = [];
-        [$municipality_ref01_data_dt0_loaded, $err] = $municipality_ref01_ent->load($municipality_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $municipality_ref01_data_dt0_loaded = $municipality_ref01_ent->load($municipality_ref01_match_dt0, null);
         $this->assertNotNull($municipality_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function municipality_basic_setup($extra)
         "POSTALIAPIREST_TEST_MUNICIPALITY_ENTID" => $idmap,
         "POSTALIAPIREST_TEST_LIVE" => "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN" => "FALSE",
-        "POSTALIAPIREST_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function municipality_basic_setup($extra)
     if ($env["POSTALIAPIREST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["POSTALIAPIREST_APIKEY"],
             ],
             $extra ?? [],
         ]);

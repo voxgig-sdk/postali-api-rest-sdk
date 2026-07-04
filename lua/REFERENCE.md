@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -92,7 +91,7 @@ same parameters as `direct()`.
 ## MunicipalityEntity
 
 ```lua
-local municipality = client:Municipality(nil)
+local municipality = client:municipality(nil)
 ```
 
 ### Fields
@@ -109,7 +108,7 @@ local municipality = client:Municipality(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Municipality():load({ id = "municipality_id" })
+local result, err = client:municipality():load({ id = "municipality_id" })
 ```
 
 ### Common Methods
@@ -145,7 +144,7 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```lua
-local postal_code = client:PostalCode(nil)
+local postal_code = client:postal_code(nil)
 ```
 
 ### Fields
@@ -165,7 +164,7 @@ local postal_code = client:PostalCode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PostalCode():load({ id = "postal_code_id" })
+local result, err = client:postal_code():load({ id = "postal_code_id" })
 ```
 
 ### Common Methods
@@ -201,7 +200,7 @@ Return the entity name.
 ## StateEntity
 
 ```lua
-local state = client:State(nil)
+local state = client:state(nil)
 ```
 
 ### Fields
@@ -217,7 +216,7 @@ local state = client:State(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:State():list()
+local results, err = client:state():list()
 ```
 
 ### Common Methods

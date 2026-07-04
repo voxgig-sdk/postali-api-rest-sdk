@@ -9,9 +9,10 @@ The PHP SDK for the PostaliApiRest API — an entity-oriented client using PHP c
 
 
 ## Install
-```bash
-composer require voxgig-sdk/postali-api-rest
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/postali-api-rest-sdk/releases](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,17 +26,18 @@ loading a specific record.
 <?php
 require_once 'postaliapirest_sdk.php';
 
-$client = new PostaliApiRestSDK([
-    "apikey" => getenv("POSTALI-API-REST_APIKEY"),
-]);
+$client = new PostaliApiRestSDK();
 ```
 
 ### 3. Load a municipality
 
 ```php
-[$result, $err] = $client->Municipality()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->municipality()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -46,28 +48,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +86,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = PostaliApiRestSDK::test();
 
-[$result, $err] = $client->PostaliApiRest()->load(["id" => "test01"]);
+$result = $client->municipality()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -115,8 +120,7 @@ $client = new PostaliApiRestSDK([
 Create a `.env.local` file at the project root:
 
 ```
-POSTALI-API-REST_TEST_LIVE=TRUE
-POSTALI-API-REST_APIKEY=<your-key>
+POSTALI_API_REST_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -139,7 +143,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -187,8 +190,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -243,7 +250,7 @@ API path: `/estados`
 
 ### Municipality
 
-Create an instance: `const municipality = client.Municipality()`
+Create an instance: `const municipality = client.municipality`
 
 #### Operations
 
@@ -261,13 +268,13 @@ Create an instance: `const municipality = client.Municipality()`
 #### Example: Load
 
 ```ts
-const municipality = await client.Municipality().load({ id: 'municipality_id' })
+const municipality = await client.municipality.load({ id: 'municipality_id' })
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.PostalCode()`
+Create an instance: `const postal_code = client.postal_code`
 
 #### Operations
 
@@ -288,13 +295,13 @@ Create an instance: `const postal_code = client.PostalCode()`
 #### Example: Load
 
 ```ts
-const postal_code = await client.PostalCode().load({ id: 'postal_code_id' })
+const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
 ```
 
 
 ### State
 
-Create an instance: `const state = client.State()`
+Create an instance: `const state = client.state`
 
 #### Operations
 
@@ -311,7 +318,7 @@ Create an instance: `const state = client.State()`
 #### Example: List
 
 ```ts
-const states = await client.State().list()
+const states = await client.state.list()
 ```
 
 
@@ -386,11 +393,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$municipality = $client->municipality();
+$municipality->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $municipality->dataGet() now returns the loaded municipality data
+// $municipality->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

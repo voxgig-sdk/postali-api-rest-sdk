@@ -15,9 +15,6 @@ module PostaliApiRestConfig
       },
       "options" => {
         "base" => "https://postali.app/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -63,6 +60,7 @@ module PostaliApiRestConfig
                         "orig" => "state",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -151,6 +149,7 @@ module PostaliApiRestConfig
                         "orig" => "postal_code",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },

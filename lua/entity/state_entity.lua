@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch StateListMatch
+---@param ctrl? table
+---@return State[]
+---@return string? err
 function StateEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

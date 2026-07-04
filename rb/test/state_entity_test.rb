@@ -43,8 +43,7 @@ class StateEntityTest < Minitest::Test
     state_ref01_ent = client.State(nil)
     state_ref01_match = {}
 
-    state_ref01_list_result, err = state_ref01_ent.list(state_ref01_match, nil)
-    assert_nil err
+    state_ref01_list_result = state_ref01_ent.list(state_ref01_match, nil)
     assert state_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def state_basic_setup(extra)
     "POSTALIAPIREST_TEST_STATE_ENTID" => idmap,
     "POSTALIAPIREST_TEST_LIVE" => "FALSE",
     "POSTALIAPIREST_TEST_EXPLAIN" => "FALSE",
-    "POSTALIAPIREST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def state_basic_setup(extra)
   if env["POSTALIAPIREST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["POSTALIAPIREST_APIKEY"],
       },
       extra || {},
     ])

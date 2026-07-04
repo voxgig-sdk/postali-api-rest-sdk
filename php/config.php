@@ -20,9 +20,6 @@ class PostaliApiRestConfig
             ],
             "options" => [
                 "base" => "https://postali.app/api",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -68,6 +65,7 @@ class PostaliApiRestConfig
                         'orig' => 'state',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -156,6 +154,7 @@ class PostaliApiRestConfig
                         'orig' => 'postal_code',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

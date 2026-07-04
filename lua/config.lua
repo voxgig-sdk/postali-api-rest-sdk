@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://postali.app/api",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -62,6 +59,7 @@ local function make_config()
                       ["orig"] = "state",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -150,6 +148,7 @@ local function make_config()
                       ["orig"] = "postal_code",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },

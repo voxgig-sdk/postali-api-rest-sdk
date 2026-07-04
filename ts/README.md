@@ -9,9 +9,12 @@ The TypeScript SDK for the PostaliApiRest API — a type-safe, entity-oriented c
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/postali-api-rest
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/postali-api-rest-sdk/releases](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { PostaliApiRestSDK } from 'postali-api-rest'
+import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest'
 
-const client = new PostaliApiRestSDK({
-  apikey: process.env.POSTALI-API-REST_APIKEY,
-})
+const client = new PostaliApiRestSDK()
 ```
 
 ### 3. Load a municipality
 
 ```ts
-const result = await client.Municipality().load({ id: 'example_id' })
+const result = await client.municipality.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = PostaliApiRestSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.municipality.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new PostaliApiRestSDK({ apikey: '...' })
+const client = new PostaliApiRestSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.municipality
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new PostaliApiRestSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new PostaliApiRestSDK({
 Create a `.env.local` file at the project root:
 
 ```
-POSTALI-API-REST_TEST_LIVE=TRUE
-POSTALI-API-REST_APIKEY=<your-key>
+POSTALI_API_REST_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new PostaliApiRestSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new PostaliApiRestSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -293,7 +290,7 @@ API path: `/estados`
 
 ### Municipality
 
-Create an instance: `const municipality = client.Municipality()`
+Create an instance: `const municipality = client.municipality`
 
 #### Operations
 
@@ -311,13 +308,13 @@ Create an instance: `const municipality = client.Municipality()`
 #### Example: Load
 
 ```ts
-const municipality = await client.Municipality().load({ id: 'municipality_id' })
+const municipality = await client.municipality.load({ id: 'municipality_id' })
 ```
 
 
 ### PostalCode
 
-Create an instance: `const postal_code = client.PostalCode()`
+Create an instance: `const postal_code = client.postal_code`
 
 #### Operations
 
@@ -338,13 +335,13 @@ Create an instance: `const postal_code = client.PostalCode()`
 #### Example: Load
 
 ```ts
-const postal_code = await client.PostalCode().load({ id: 'postal_code_id' })
+const postal_code = await client.postal_code.load({ id: 'postal_code_id' })
 ```
 
 
 ### State
 
-Create an instance: `const state = client.State()`
+Create an instance: `const state = client.state`
 
 #### Operations
 
@@ -361,7 +358,7 @@ Create an instance: `const state = client.State()`
 #### Example: List
 
 ```ts
-const states = await client.State().list()
+const states = await client.state.list()
 ```
 
 
@@ -422,7 +419,7 @@ postali-api-rest/
 Import the SDK from the package root:
 
 ```ts
-import { PostaliApiRestSDK } from 'postali-api-rest'
+import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest'
 ```
 
 ### Entity state
@@ -432,11 +429,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const municipality = client.municipality
+await municipality.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// municipality.data() now returns the loaded municipality data
+// municipality.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

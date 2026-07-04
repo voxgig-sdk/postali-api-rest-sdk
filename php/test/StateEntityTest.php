@@ -50,8 +50,7 @@ class StateEntityTest extends TestCase
         $state_ref01_ent = $client->State(null);
         $state_ref01_match = [];
 
-        [$state_ref01_list_result, $err] = $state_ref01_ent->list($state_ref01_match, null);
-        $this->assertNull($err);
+        $state_ref01_list_result = $state_ref01_ent->list($state_ref01_match, null);
         $this->assertIsArray($state_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function state_basic_setup($extra)
         "POSTALIAPIREST_TEST_STATE_ENTID" => $idmap,
         "POSTALIAPIREST_TEST_LIVE" => "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN" => "FALSE",
-        "POSTALIAPIREST_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function state_basic_setup($extra)
     if ($env["POSTALIAPIREST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["POSTALIAPIREST_APIKEY"],
             ],
             $extra ?? [],
         ]);

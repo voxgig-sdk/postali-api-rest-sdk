@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://postali.app/api",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -63,6 +60,7 @@ def make_config():
                       "orig": "state",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -151,6 +149,7 @@ def make_config():
                       "orig": "postal_code",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },

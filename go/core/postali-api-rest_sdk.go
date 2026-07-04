@@ -245,16 +245,25 @@ func (sdk *PostaliApiRestSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// Municipality returns a Municipality entity bound to this client.
+// Idiomatic usage: client.Municipality(nil).List(nil, nil) or
+// client.Municipality(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PostaliApiRestSDK) Municipality(data map[string]any) PostaliApiRestEntity {
 	return NewMunicipalityEntityFunc(sdk, data)
 }
 
 
+// PostalCode returns a PostalCode entity bound to this client.
+// Idiomatic usage: client.PostalCode(nil).List(nil, nil) or
+// client.PostalCode(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PostaliApiRestSDK) PostalCode(data map[string]any) PostaliApiRestEntity {
 	return NewPostalCodeEntityFunc(sdk, data)
 }
 
 
+// State returns a State entity bound to this client.
+// Idiomatic usage: client.State(nil).List(nil, nil) or
+// client.State(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PostaliApiRestSDK) State(data map[string]any) PostaliApiRestEntity {
 	return NewStateEntityFunc(sdk, data)
 }

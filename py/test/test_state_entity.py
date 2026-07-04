@@ -50,8 +50,7 @@ class TestStateEntity:
         state_ref01_ent = client.State(None)
         state_ref01_match = {}
 
-        state_ref01_list_result, err = state_ref01_ent.list(state_ref01_match, None)
-        assert err is None
+        state_ref01_list_result = state_ref01_ent.list(state_ref01_match, None)
         assert isinstance(state_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _state_basic_setup(extra):
         "POSTALIAPIREST_TEST_STATE_ENTID": idmap,
         "POSTALIAPIREST_TEST_LIVE": "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN": "FALSE",
-        "POSTALIAPIREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _state_basic_setup(extra):
     if env.get("POSTALIAPIREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("POSTALIAPIREST_APIKEY"),
             },
             extra or {},
         ])

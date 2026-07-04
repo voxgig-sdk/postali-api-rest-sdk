@@ -49,8 +49,7 @@ class TestMunicipalityEntity:
         # LOAD
         municipality_ref01_ent = client.Municipality(None)
         municipality_ref01_match_dt0 = {}
-        municipality_ref01_data_dt0_loaded, err = municipality_ref01_ent.load(municipality_ref01_match_dt0, None)
-        assert err is None
+        municipality_ref01_data_dt0_loaded = municipality_ref01_ent.load(municipality_ref01_match_dt0, None)
         assert municipality_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _municipality_basic_setup(extra):
         "POSTALIAPIREST_TEST_MUNICIPALITY_ENTID": idmap,
         "POSTALIAPIREST_TEST_LIVE": "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN": "FALSE",
-        "POSTALIAPIREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _municipality_basic_setup(extra):
     if env.get("POSTALIAPIREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("POSTALIAPIREST_APIKEY"),
             },
             extra or {},
         ])

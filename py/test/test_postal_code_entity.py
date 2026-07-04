@@ -49,8 +49,7 @@ class TestPostalCodeEntity:
         # LOAD
         postal_code_ref01_ent = client.PostalCode(None)
         postal_code_ref01_match_dt0 = {}
-        postal_code_ref01_data_dt0_loaded, err = postal_code_ref01_ent.load(postal_code_ref01_match_dt0, None)
-        assert err is None
+        postal_code_ref01_data_dt0_loaded = postal_code_ref01_ent.load(postal_code_ref01_match_dt0, None)
         assert postal_code_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _postal_code_basic_setup(extra):
         "POSTALIAPIREST_TEST_POSTAL_CODE_ENTID": idmap,
         "POSTALIAPIREST_TEST_LIVE": "FALSE",
         "POSTALIAPIREST_TEST_EXPLAIN": "FALSE",
-        "POSTALIAPIREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _postal_code_basic_setup(extra):
     if env.get("POSTALIAPIREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("POSTALIAPIREST_APIKEY"),
             },
             extra or {},
         ])
