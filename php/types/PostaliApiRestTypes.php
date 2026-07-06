@@ -47,7 +47,7 @@ class State
     public ?array $estado = null;
 }
 
-/** Match filter for State#list (any subset of State fields). */
+/** Request payload for State#list. */
 class StateListMatch
 {
     public ?array $estado = null;

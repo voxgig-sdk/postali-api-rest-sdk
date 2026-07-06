@@ -73,7 +73,7 @@ State = Struct.new(
   keyword_init: true
 )
 
-# Match filter for State#list (any subset of State fields).
+# Request payload for State#list.
 #
 # @!attribute [rw] estado
 #   @return [Array, nil]

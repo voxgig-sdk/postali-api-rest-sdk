@@ -38,8 +38,7 @@ type State struct {
 	Estado *[]any `json:"estado,omitempty"`
 }
 
-// StateListMatch mirrors the state fields as an all-optional match
-// filter (Go analog of Partial<State>).
+// StateListMatch is the typed request payload for State.ListTyped.
 type StateListMatch struct {
 	Estado *[]any `json:"estado,omitempty"`
 }

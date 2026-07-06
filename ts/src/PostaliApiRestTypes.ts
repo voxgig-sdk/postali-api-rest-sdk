@@ -30,5 +30,7 @@ export interface State {
   estado?: any[]
 }
 
-export type StateListMatch = Partial<State>
+export interface StateListMatch {
+  estado?: any[]
+}
 

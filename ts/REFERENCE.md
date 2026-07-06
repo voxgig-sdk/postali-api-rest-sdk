@@ -140,8 +140,8 @@ const municipality = client.Municipality()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$ARRAY`` | No |  |
+| `estado` | `string` | No |  |
+| `municipio` | `any[]` | No |  |
 
 ### Operations
 
@@ -150,7 +150,7 @@ const municipality = client.Municipality()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Municipality().load({ id: 'municipality_id' })
+const result = await client.Municipality().load()
 ```
 
 ### Common Methods
@@ -191,11 +191,11 @@ const postal_code = client.PostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | ``$STRING`` | No |  |
-| `codigo_postal` | ``$STRING`` | No |  |
-| `colonia` | ``$ARRAY`` | No |  |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$STRING`` | No |  |
+| `ciudad` | `string` | No |  |
+| `codigo_postal` | `string` | No |  |
+| `colonia` | `any[]` | No |  |
+| `estado` | `string` | No |  |
+| `municipio` | `string` | No |  |
 
 ### Operations
 
@@ -204,7 +204,7 @@ const postal_code = client.PostalCode()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PostalCode().load({ id: 'postal_code_id' })
+const result = await client.PostalCode().load()
 ```
 
 ### Common Methods
@@ -245,7 +245,7 @@ const state = client.State()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$ARRAY`` | No |  |
+| `estado` | `any[]` | No |  |
 
 ### Operations
 

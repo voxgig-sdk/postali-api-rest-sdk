@@ -105,8 +105,8 @@ municipality := client.Municipality(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$ARRAY`` | No |  |
+| `estado` | `string` | No |  |
+| `municipio` | `[]any` | No |  |
 
 ### Operations
 
@@ -115,7 +115,7 @@ municipality := client.Municipality(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Municipality(nil).Load(map[string]any{"id": "municipality_id"}, nil)
+result, err := client.Municipality(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -152,11 +152,11 @@ postal_code := client.PostalCode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | ``$STRING`` | No |  |
-| `codigo_postal` | ``$STRING`` | No |  |
-| `colonia` | ``$ARRAY`` | No |  |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$STRING`` | No |  |
+| `ciudad` | `string` | No |  |
+| `codigo_postal` | `string` | No |  |
+| `colonia` | `[]any` | No |  |
+| `estado` | `string` | No |  |
+| `municipio` | `string` | No |  |
 
 ### Operations
 
@@ -165,7 +165,7 @@ postal_code := client.PostalCode(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.PostalCode(nil).Load(map[string]any{"id": "postal_code_id"}, nil)
+result, err := client.PostalCode(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -202,7 +202,7 @@ state := client.State(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$ARRAY`` | No |  |
+| `estado` | `[]any` | No |  |
 
 ### Operations
 

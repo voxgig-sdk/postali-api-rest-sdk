@@ -8,7 +8,7 @@ Complete API reference for the PostaliApiRest PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/postali-api-rest_sdk.php';
+require_once __DIR__ . '/postaliapirest_sdk.php';
 
 $client = new PostaliApiRestSDK($options);
 ```
@@ -53,11 +53,11 @@ Create a new `PostalCodeEntity` instance. Pass `null` for no initial data.
 
 Create a new `StateEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): PostaliApiRestUtility`
 
 Return a copy of the SDK utility object.
 
@@ -100,8 +100,8 @@ $municipality = $client->Municipality();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$ARRAY`` | No |  |
+| `estado` | `string` | No |  |
+| `municipio` | `array` | No |  |
 
 ### Operations
 
@@ -110,24 +110,24 @@ $municipality = $client->Municipality();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Municipality()->load(["id" => "municipality_id"]);
+$result = $client->Municipality()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -136,7 +136,7 @@ Set the entity match criteria.
 Create a new `MunicipalityEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -153,11 +153,11 @@ $postal_code = $client->PostalCode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | ``$STRING`` | No |  |
-| `codigo_postal` | ``$STRING`` | No |  |
-| `colonia` | ``$ARRAY`` | No |  |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$STRING`` | No |  |
+| `ciudad` | `string` | No |  |
+| `codigo_postal` | `string` | No |  |
+| `colonia` | `array` | No |  |
+| `estado` | `string` | No |  |
+| `municipio` | `string` | No |  |
 
 ### Operations
 
@@ -166,24 +166,24 @@ $postal_code = $client->PostalCode();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->PostalCode()->load(["id" => "postal_code_id"]);
+$result = $client->PostalCode()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -192,7 +192,7 @@ Set the entity match criteria.
 Create a new `PostalCodeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -209,33 +209,33 @@ $state = $client->State();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$ARRAY`` | No |  |
+| `estado` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->State()->list([]);
+$results = $client->State()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -244,7 +244,7 @@ Set the entity match criteria.
 Create a new `StateEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -98,8 +98,8 @@ local municipality = client:Municipality(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$ARRAY`` | No |  |
+| `estado` | `string` | No |  |
+| `municipio` | `table` | No |  |
 
 ### Operations
 
@@ -108,7 +108,7 @@ local municipality = client:Municipality(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Municipality():load({ id = "municipality_id" })
+local result, err = client:Municipality():load()
 ```
 
 ### Common Methods
@@ -151,11 +151,11 @@ local postal_code = client:PostalCode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | ``$STRING`` | No |  |
-| `codigo_postal` | ``$STRING`` | No |  |
-| `colonia` | ``$ARRAY`` | No |  |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$STRING`` | No |  |
+| `ciudad` | `string` | No |  |
+| `codigo_postal` | `string` | No |  |
+| `colonia` | `table` | No |  |
+| `estado` | `string` | No |  |
+| `municipio` | `string` | No |  |
 
 ### Operations
 
@@ -164,7 +164,7 @@ local postal_code = client:PostalCode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PostalCode():load({ id = "postal_code_id" })
+local result, err = client:PostalCode():load()
 ```
 
 ### Common Methods
@@ -207,7 +207,7 @@ local state = client:State(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$ARRAY`` | No |  |
+| `estado` | `table` | No |  |
 
 ### Operations
 

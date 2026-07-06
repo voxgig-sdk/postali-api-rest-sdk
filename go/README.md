@@ -4,6 +4,8 @@
 
 The Golang SDK for the PostaliApiRest API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Municipality(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -49,12 +51,41 @@ func main() {
     client := sdk.New()
 
     // Load a single municipality — the value is the loaded record.
-    municipality, err := client.Municipality(nil).Load(map[string]any{"id": "example_id"}, nil)
+    municipality, err := client.Municipality(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(municipality)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+municipality, err := client.Municipality(nil).Load(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = municipality
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -105,12 +136,12 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 municipality, err := client.Municipality(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(municipality) // the loaded mock data
+fmt.Println(municipality) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -199,9 +230,6 @@ All entities implement the `PostaliApiRestEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -214,16 +242,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    municipality, err := client.Municipality(nil).Load(map[string]any{"id": "example_id"}, nil)
+    municipality, err := client.Municipality(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // municipality is the loaded record
+    // municipality is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -284,13 +312,13 @@ Create an instance: `municipality := client.Municipality(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | ``$STRING`` |  |
-| `municipio` | ``$ARRAY`` |  |
+| `estado` | `string` |  |
+| `municipio` | `[]any` |  |
 
 #### Example: Load
 
 ```go
-municipality, err := client.Municipality(nil).Load(map[string]any{"id": "municipality_id"}, nil)
+municipality, err := client.Municipality(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -312,16 +340,16 @@ Create an instance: `postal_code := client.PostalCode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ciudad` | ``$STRING`` |  |
-| `codigo_postal` | ``$STRING`` |  |
-| `colonia` | ``$ARRAY`` |  |
-| `estado` | ``$STRING`` |  |
-| `municipio` | ``$STRING`` |  |
+| `ciudad` | `string` |  |
+| `codigo_postal` | `string` |  |
+| `colonia` | `[]any` |  |
+| `estado` | `string` |  |
+| `municipio` | `string` |  |
 
 #### Example: Load
 
 ```go
-postal_code, err := client.PostalCode(nil).Load(map[string]any{"id": "postal_code_id"}, nil)
+postal_code, err := client.PostalCode(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -343,7 +371,7 @@ Create an instance: `state := client.State(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | ``$ARRAY`` |  |
+| `estado` | `[]any` |  |
 
 #### Example: List
 
@@ -356,12 +384,16 @@ fmt.Println(states) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -378,9 +410,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -426,9 +458,9 @@ stores the returned data and match criteria internally.
 
 ```go
 municipality := client.Municipality(nil)
-municipality.Load(map[string]any{"id": "example_id"}, nil)
+municipality.Load(nil, nil)
 
-// municipality.Data() now returns the loaded municipality data
+// municipality.Data() now returns the municipality data from the last load
 // municipality.Match() returns the last match criteria
 ```
 

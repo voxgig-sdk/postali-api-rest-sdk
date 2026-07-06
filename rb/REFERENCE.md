@@ -8,7 +8,7 @@ Complete API reference for the PostaliApiRest Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'postali-api-rest_sdk'
+require_relative 'PostaliApiRest_sdk'
 
 client = PostaliApiRestSDK.new(options)
 ```
@@ -101,8 +101,8 @@ municipality = client.Municipality
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$ARRAY`` | No |  |
+| `estado` | `String` | No |  |
+| `municipio` | `Array` | No |  |
 
 ### Operations
 
@@ -111,7 +111,7 @@ municipality = client.Municipality
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Municipality.load({ "id" => "municipality_id" })
+result = client.Municipality.load()
 ```
 
 ### Common Methods
@@ -154,11 +154,11 @@ postal_code = client.PostalCode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | ``$STRING`` | No |  |
-| `codigo_postal` | ``$STRING`` | No |  |
-| `colonia` | ``$ARRAY`` | No |  |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$STRING`` | No |  |
+| `ciudad` | `String` | No |  |
+| `codigo_postal` | `String` | No |  |
+| `colonia` | `Array` | No |  |
+| `estado` | `String` | No |  |
+| `municipio` | `String` | No |  |
 
 ### Operations
 
@@ -167,7 +167,7 @@ postal_code = client.PostalCode
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.PostalCode.load({ "id" => "postal_code_id" })
+result = client.PostalCode.load()
 ```
 
 ### Common Methods
@@ -210,16 +210,16 @@ state = client.State
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$ARRAY`` | No |  |
+| `estado` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.State.list(nil)
+results = client.State.list
 ```
 
 ### Common Methods

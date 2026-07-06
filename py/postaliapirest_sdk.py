@@ -221,19 +221,19 @@ class PostaliApiRestSDK:
 
 
     def Municipality(self, data=None) -> "MunicipalityEntity":
-        """Entity factory: client.Municipality().list({}) / client.Municipality().load({"id": ...})."""
+        """Entity factory: client.Municipality().list() / client.Municipality().load({"id": ...})."""
         from entity.municipality_entity import MunicipalityEntity
         return MunicipalityEntity(self, data)
 
 
     def PostalCode(self, data=None) -> "PostalCodeEntity":
-        """Entity factory: client.PostalCode().list({}) / client.PostalCode().load({"id": ...})."""
+        """Entity factory: client.PostalCode().list() / client.PostalCode().load({"id": ...})."""
         from entity.postal_code_entity import PostalCodeEntity
         return PostalCodeEntity(self, data)
 
 
     def State(self, data=None) -> "StateEntity":
-        """Entity factory: client.State().list({}) / client.State().load({"id": ...})."""
+        """Entity factory: client.State().list() / client.State().load({"id": ...})."""
         from entity.state_entity import StateEntity
         return StateEntity(self, data)
 

@@ -27,6 +27,7 @@
 ---@field estado? table
 
 ---@class StateListMatch
+---@field estado? table
 
 local M = {}
 

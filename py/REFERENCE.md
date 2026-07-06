@@ -8,7 +8,7 @@ Complete API reference for the PostaliApiRest Python SDK.
 ### Constructor
 
 ```python
-from postali-api-rest_sdk import PostaliApiRestSDK
+from postaliapirest_sdk import PostaliApiRestSDK
 
 client = PostaliApiRestSDK(options)
 ```
@@ -95,8 +95,8 @@ municipality = client.Municipality()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$ARRAY`` | No |  |
+| `estado` | `str` | No |  |
+| `municipio` | `list` | No |  |
 
 ### Operations
 
@@ -105,7 +105,7 @@ municipality = client.Municipality()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Municipality().load({"id": "municipality_id"})
+result = client.Municipality().load()
 ```
 
 ### Common Methods
@@ -147,11 +147,11 @@ postal_code = client.PostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | ``$STRING`` | No |  |
-| `codigo_postal` | ``$STRING`` | No |  |
-| `colonia` | ``$ARRAY`` | No |  |
-| `estado` | ``$STRING`` | No |  |
-| `municipio` | ``$STRING`` | No |  |
+| `ciudad` | `str` | No |  |
+| `codigo_postal` | `str` | No |  |
+| `colonia` | `list` | No |  |
+| `estado` | `str` | No |  |
+| `municipio` | `str` | No |  |
 
 ### Operations
 
@@ -160,7 +160,7 @@ postal_code = client.PostalCode()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.PostalCode().load({"id": "postal_code_id"})
+result = client.PostalCode().load()
 ```
 
 ### Common Methods
@@ -202,16 +202,16 @@ state = client.State()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | ``$ARRAY`` | No |  |
+| `estado` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.State().list({})
+results = client.State().list()
 for state in results:
     print(state)
 ```
