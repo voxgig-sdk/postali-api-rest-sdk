@@ -38,11 +38,12 @@ client = PostaliApiRestSDK()
 
 ### 3. Load a municipality
 
+Municipality is nested under state, so provide the `state`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    municipality = client.Municipality().load()
+    municipality = client.Municipality().load({"state": "example_state"})
     print(municipality)
 except Exception as err:
     print(f"load failed: {err}")
@@ -299,7 +300,7 @@ Create an instance: `municipality = client.Municipality()`
 #### Example: Load
 
 ```python
-municipality = client.Municipality().load()
+municipality = client.Municipality().load({"state": "state"})
 ```
 
 
@@ -326,7 +327,7 @@ Create an instance: `postal_code = client.PostalCode()`
 #### Example: Load
 
 ```python
-postal_code = client.PostalCode().load()
+postal_code = client.PostalCode().load({"postal_code": "postal_code"})
 ```
 
 

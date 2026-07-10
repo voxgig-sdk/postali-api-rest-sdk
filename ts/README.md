@@ -35,11 +35,14 @@ const client = new PostaliApiRestSDK()
 
 ### 3. Load a municipality
 
+Municipality is nested under state, so provide the `state`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const municipality = await client.Municipality().load()
+  const municipality = await client.Municipality().load({
+    state: 'example_state',
+  })
   console.log(municipality)
 } catch (err) {
   console.error('load failed:', err)
@@ -345,7 +348,7 @@ Create an instance: `const municipality = client.Municipality()`
 #### Example: Load
 
 ```ts
-const municipality = await client.Municipality().load()
+const municipality = await client.Municipality().load({ state: 'state' })
 ```
 
 
@@ -372,7 +375,7 @@ Create an instance: `const postal_code = client.PostalCode()`
 #### Example: Load
 
 ```ts
-const postal_code = await client.PostalCode().load()
+const postal_code = await client.PostalCode().load({ postal_code: 'postal_code' })
 ```
 
 

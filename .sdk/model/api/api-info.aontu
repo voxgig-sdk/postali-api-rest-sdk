@@ -15,9 +15,9 @@ main: {
           url: "https://postali.app/api"
         }
       ]
+      summary: "API REST for retrieving postal code information for Mexican addresses"
       title: "postali API REST"
       version: "1.0.0"
+      website: "https://postali.app"
     }
   }
-}
-

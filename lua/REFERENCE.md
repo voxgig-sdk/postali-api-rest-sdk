@@ -108,7 +108,7 @@ local municipality = client:Municipality(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Municipality():load()
+local result, err = client:Municipality():load({ state = "state" })
 ```
 
 ### Common Methods
@@ -164,7 +164,7 @@ local postal_code = client:PostalCode(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PostalCode():load()
+local result, err = client:PostalCode():load({ postal_code = "postal_code" })
 ```
 
 ### Common Methods

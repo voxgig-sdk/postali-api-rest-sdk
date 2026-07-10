@@ -35,8 +35,10 @@ local client = sdk.new()
 
 ### 3. Load a municipality
 
+Municipality is nested under state, so provide the `state`.
+
 ```lua
-local municipality, err = client:Municipality():load()
+local municipality, err = client:Municipality():load({ state = "example_state" })
 if err then error(err) end
 print(municipality)
 ```
@@ -285,7 +287,7 @@ Create an instance: `local municipality = client:Municipality(nil)`
 #### Example: Load
 
 ```lua
-local municipality, err = client:Municipality():load()
+local municipality, err = client:Municipality():load({ state = "state" })
 ```
 
 
@@ -312,7 +314,7 @@ Create an instance: `local postal_code = client:PostalCode(nil)`
 #### Example: Load
 
 ```lua
-local postal_code, err = client:PostalCode():load()
+local postal_code, err = client:PostalCode():load({ postal_code = "postal_code" })
 ```
 
 

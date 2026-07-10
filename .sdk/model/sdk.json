@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -411,14 +408,17 @@
           "url": "https://postali.app/api"
         },
         "description": "API REST for retrieving postal code information for Mexican addresses",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://postali.app/api"
           }
         ],
+        "summary": "API REST for retrieving postal code information for Mexican addresses",
         "title": "postali API REST",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://postali.app"
       },
       "option": {},
       "target": {
@@ -471,6 +471,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -521,6 +524,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

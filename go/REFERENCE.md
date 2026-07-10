@@ -99,6 +99,7 @@ same parameters as `Direct()`.
 
 ```go
 municipality := client.Municipality(nil)
+fmt.Println(municipality.GetName()) // "municipality"
 ```
 
 ### Fields
@@ -115,7 +116,11 @@ municipality := client.Municipality(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Municipality(nil).Load(nil, nil)
+result, err := client.Municipality(nil).Load(map[string]any{"state": "state"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -145,7 +150,8 @@ Return the entity name.
 ## PostalCodeEntity
 
 ```go
-postal_code := client.PostalCode(nil)
+postalCode := client.PostalCode(nil)
+fmt.Println(postalCode.GetName()) // "postal_code"
 ```
 
 ### Fields
@@ -165,7 +171,11 @@ postal_code := client.PostalCode(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.PostalCode(nil).Load(nil, nil)
+result, err := client.PostalCode(nil).Load(map[string]any{"postal_code": "postal_code"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -196,6 +206,7 @@ Return the entity name.
 
 ```go
 state := client.State(nil)
+fmt.Println(state.GetName()) // "state"
 ```
 
 ### Fields
@@ -212,6 +223,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.State(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

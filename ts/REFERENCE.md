@@ -150,7 +150,7 @@ const municipality = client.Municipality()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Municipality().load()
+const result = await client.Municipality().load({ state: 'state' })
 ```
 
 ### Common Methods
@@ -204,7 +204,7 @@ const postal_code = client.PostalCode()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PostalCode().load()
+const result = await client.PostalCode().load({ postal_code: 'postal_code' })
 ```
 
 ### Common Methods

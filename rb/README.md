@@ -32,10 +32,12 @@ client = PostaliApiRestSDK.new
 
 ### 3. Load a municipality
 
+Municipality is nested under state, so provide the `state`.
+
 ```ruby
 begin
   # load returns the bare Municipality record (raises on error).
-  municipality = client.Municipality.load()
+  municipality = client.Municipality.load({ "state" => "example_state" })
   puts municipality
 rescue => err
   warn "load failed: #{err}"
@@ -294,7 +296,7 @@ Create an instance: `municipality = client.Municipality`
 
 ```ruby
 # load returns the bare Municipality record (raises on error).
-municipality = client.Municipality.load()
+municipality = client.Municipality.load({ "state" => "state" })
 ```
 
 
@@ -322,7 +324,7 @@ Create an instance: `postal_code = client.PostalCode`
 
 ```ruby
 # load returns the bare PostalCode record (raises on error).
-postal_code = client.PostalCode.load()
+postal_code = client.PostalCode.load({ "postal_code" => "postal_code" })
 ```
 
 

@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single municipality — the value is the loaded record.
-    municipality, err := client.Municipality(nil).Load(nil, nil)
+    municipality, err := client.Municipality(nil).Load(map[string]any{"state": "example_state"}, nil)
     if err != nil {
         panic(err)
     }
@@ -318,7 +318,7 @@ Create an instance: `municipality := client.Municipality(nil)`
 #### Example: Load
 
 ```go
-municipality, err := client.Municipality(nil).Load(nil, nil)
+municipality, err := client.Municipality(nil).Load(map[string]any{"state": "state"}, nil)
 if err != nil {
     panic(err)
 }
@@ -328,7 +328,7 @@ fmt.Println(municipality) // the loaded record
 
 ### PostalCode
 
-Create an instance: `postal_code := client.PostalCode(nil)`
+Create an instance: `postalCode := client.PostalCode(nil)`
 
 #### Operations
 
@@ -349,11 +349,11 @@ Create an instance: `postal_code := client.PostalCode(nil)`
 #### Example: Load
 
 ```go
-postal_code, err := client.PostalCode(nil).Load(nil, nil)
+postalCode, err := client.PostalCode(nil).Load(map[string]any{"postal_code": "postal_code"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(postal_code) // the loaded record
+fmt.Println(postalCode) // the loaded record
 ```
 
 

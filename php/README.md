@@ -33,10 +33,12 @@ $client = new PostaliApiRestSDK();
 
 ### 3. Load a municipality
 
+Municipality is nested under state, so provide the `state`.
+
 ```php
 try {
     // load() returns the bare Municipality record (throws on error).
-    $municipality = $client->Municipality()->load();
+    $municipality = $client->Municipality()->load(["state" => "example_state"]);
     print_r($municipality);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -304,7 +306,7 @@ Create an instance: `$municipality = $client->Municipality();`
 
 ```php
 // load() returns the bare Municipality record (throws on error).
-$municipality = $client->Municipality()->load();
+$municipality = $client->Municipality()->load(["state" => "state"]);
 ```
 
 
@@ -332,7 +334,7 @@ Create an instance: `$postal_code = $client->PostalCode();`
 
 ```php
 // load() returns the bare PostalCode record (throws on error).
-$postal_code = $client->PostalCode()->load();
+$postal_code = $client->PostalCode()->load(["postal_code" => "postal_code"]);
 ```
 
 

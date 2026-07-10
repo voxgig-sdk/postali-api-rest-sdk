@@ -111,7 +111,7 @@ municipality = client.Municipality
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Municipality.load()
+result = client.Municipality.load({ "state" => "state" })
 ```
 
 ### Common Methods
@@ -167,7 +167,7 @@ postal_code = client.PostalCode
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.PostalCode.load()
+result = client.PostalCode.load({ "postal_code" => "postal_code" })
 ```
 
 ### Common Methods

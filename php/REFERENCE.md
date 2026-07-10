@@ -110,7 +110,7 @@ $municipality = $client->Municipality();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Municipality()->load();
+$result = $client->Municipality()->load(["state" => "state"]);
 ```
 
 ### Common Methods
@@ -166,7 +166,7 @@ $postal_code = $client->PostalCode();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->PostalCode()->load();
+$result = $client->PostalCode()->load(["postal_code" => "postal_code"]);
 ```
 
 ### Common Methods
