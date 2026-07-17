@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- PostaliApiRest SDK exists test
 
 local sdk = require("postali-api-rest_sdk")
 
