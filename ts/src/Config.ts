@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'PostaliApiRest',
   }
 
 
@@ -69,7 +69,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "municipio",
+          "name": "municipios",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -97,6 +97,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/municipios/{state}",
               "parts": [
@@ -144,7 +145,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "colonia",
+          "name": "colonias",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 2
@@ -186,6 +187,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/codigo_postal/{postalCode}",
               "parts": [
@@ -224,7 +226,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "estado",
+          "name": "estados",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -239,6 +241,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/estados",
               "parts": [
@@ -247,7 +250,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.estados`"
               },
               "index$": 0
             }

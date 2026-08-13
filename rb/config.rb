@@ -36,7 +36,7 @@ module PostaliApiRestConfig
             },
             {
               "active" => true,
-              "name" => "municipio",
+              "name" => "municipios",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 1,
@@ -64,6 +64,7 @@ module PostaliApiRestConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/municipios/{state}",
                   "parts" => [
@@ -111,7 +112,7 @@ module PostaliApiRestConfig
             },
             {
               "active" => true,
-              "name" => "colonia",
+              "name" => "colonias",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 2,
@@ -153,6 +154,7 @@ module PostaliApiRestConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/codigo_postal/{postalCode}",
                   "parts" => [
@@ -191,7 +193,7 @@ module PostaliApiRestConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "estado",
+              "name" => "estados",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 0,
@@ -206,6 +208,7 @@ module PostaliApiRestConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/estados",
                   "parts" => [
@@ -214,7 +217,7 @@ module PostaliApiRestConfig
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.estados`",
                   },
                   "index$" => 0,
                 },

@@ -23,7 +23,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new PostaliApiRestSDK()
-const municipality = await client.Municipality().load()
+const municipality = await client.Municipality().load({ state: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = PostaliApiRestSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = PostaliApiRestSDK.test({
+  entity: {
+    municipality: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const municipality = await client.Municipality().load({ state: 'example_state' })
-// municipality is a bare Municipality populated with mock data
+// municipality is the Municipality entity, populated with mock data
+// — call municipality.data() for the record itself
 console.log(municipality)
 ```
 
@@ -187,7 +196,7 @@ require_once 'postaliapirest_sdk.php';
 $client = new PostaliApiRestSDK();
 
 
-// Load a specific municipality (returns the bare record; throws on error)
+// Load a specific municipality (returns the ENTITY; call data_get() for the record; throws on error)
 $municipality = $client->Municipality()->load(["state" => "example_state"]);
 print_r($municipality);
 ```
@@ -218,7 +227,7 @@ require_relative "PostaliApiRest_sdk"
 client = PostaliApiRestSDK.new
 
 
-# Load a specific municipality (returns the bare record; raises on error)
+# Load a specific municipality (returns the ENTITY; call data_get for the record)
 municipality = client.Municipality.load({ "state" => "example_state" })
 puts municipality
 ```
@@ -352,6 +361,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://postali.app/api](https://postali.app/api)
 

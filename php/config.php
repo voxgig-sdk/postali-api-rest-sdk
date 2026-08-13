@@ -41,7 +41,7 @@ class PostaliApiRestConfig
             ],
             [
               'active' => true,
-              'name' => 'municipio',
+              'name' => 'municipios',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 1,
@@ -69,6 +69,7 @@ class PostaliApiRestConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/municipios/{state}',
                   'parts' => [
@@ -116,7 +117,7 @@ class PostaliApiRestConfig
             ],
             [
               'active' => true,
-              'name' => 'colonia',
+              'name' => 'colonias',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 2,
@@ -158,6 +159,7 @@ class PostaliApiRestConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/codigo_postal/{postalCode}',
                   'parts' => [
@@ -196,7 +198,7 @@ class PostaliApiRestConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'estado',
+              'name' => 'estados',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -211,6 +213,7 @@ class PostaliApiRestConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/estados',
                   'parts' => [
@@ -219,7 +222,7 @@ class PostaliApiRestConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.estados`',
                   ],
                   'index$' => 0,
                 ],

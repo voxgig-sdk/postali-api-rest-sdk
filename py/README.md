@@ -39,7 +39,7 @@ client = PostaliApiRestSDK()
 ### 3. Load a municipality
 
 Municipality is nested under state, so provide the `state`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -56,7 +56,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    municipality = client.Municipality().load()
+    municipality = client.Municipality().load({"state": "example"})
     print(municipality)
 except Exception as err:
     print(f"load failed: {err}")
@@ -123,8 +123,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = PostaliApiRestSDK.test()
 
-# Entity ops return the bare record and raise on error.
-municipality = client.Municipality().load()
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+municipality = client.Municipality().load({"state": "example"})
 # municipality contains the mock response record
 ```
 
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -245,7 +246,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `estado` |  |
-| `municipio` |  |
+| `municipios` |  |
 
 Operations: Load.
 
@@ -257,7 +258,7 @@ API path: `/municipios/{state}`
 | --- | --- |
 | `ciudad` |  |
 | `codigo_postal` |  |
-| `colonia` |  |
+| `colonias` |  |
 | `estado` |  |
 | `municipio` |  |
 
@@ -269,7 +270,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
+| `estados` |  |
 
 Operations: List.
 
@@ -295,7 +296,7 @@ Create an instance: `municipality = client.Municipality()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `estado` | `str` |  |
-| `municipio` | `list` |  |
+| `municipios` | `list` |  |
 
 #### Example: Load
 
@@ -320,7 +321,7 @@ Create an instance: `postal_code = client.PostalCode()`
 | --- | --- | --- |
 | `ciudad` | `str` |  |
 | `codigo_postal` | `str` |  |
-| `colonia` | `list` |  |
+| `colonias` | `list` |  |
 | `estado` | `str` |  |
 | `municipio` | `str` |  |
 
@@ -345,7 +346,7 @@ Create an instance: `state = client.State()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `list` |  |
+| `estados` | `list` |  |
 
 #### Example: List
 
@@ -430,7 +431,7 @@ stores the returned data and match criteria internally.
 
 ```python
 municipality = client.Municipality()
-municipality.load()
+municipality.load({"state": "example"})
 
 # municipality.data_get() now returns the municipality data from the last load
 # municipality.match_get() returns the last match criteria

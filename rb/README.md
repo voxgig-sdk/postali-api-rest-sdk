@@ -36,7 +36,7 @@ Municipality is nested under state, so provide the `state`.
 
 ```ruby
 begin
-  # load returns the bare Municipality record (raises on error).
+  # load returns the ENTITY — call data_get for the Municipality record (raises on error).
   municipality = client.Municipality.load({ "state" => "example_state" })
   puts municipality
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  municipality = client.Municipality.load()
+  municipality = client.Municipality.load({ "state" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,8 +119,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = PostaliApiRestSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-municipality = client.Municipality.load()
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+municipality = client.Municipality.load({ "state" => "example" })
 puts municipality
 ```
 
@@ -240,7 +241,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `estado` |  |
-| `municipio` |  |
+| `municipios` |  |
 
 Operations: Load.
 
@@ -252,7 +253,7 @@ API path: `/municipios/{state}`
 | --- | --- |
 | `ciudad` |  |
 | `codigo_postal` |  |
-| `colonia` |  |
+| `colonias` |  |
 | `estado` |  |
 | `municipio` |  |
 
@@ -264,7 +265,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
+| `estados` |  |
 
 Operations: List.
 
@@ -290,12 +291,12 @@ Create an instance: `municipality = client.Municipality`
 | Field | Type | Description |
 | --- | --- | --- |
 | `estado` | `String` |  |
-| `municipio` | `Array` |  |
+| `municipios` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Municipality record (raises on error).
+# load returns the ENTITY — call data_get for the Municipality record (raises on error).
 municipality = client.Municipality.load({ "state" => "state" })
 ```
 
@@ -316,14 +317,14 @@ Create an instance: `postal_code = client.PostalCode`
 | --- | --- | --- |
 | `ciudad` | `String` |  |
 | `codigo_postal` | `String` |  |
-| `colonia` | `Array` |  |
+| `colonias` | `Array` |  |
 | `estado` | `String` |  |
 | `municipio` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare PostalCode record (raises on error).
+# load returns the ENTITY — call data_get for the PostalCode record (raises on error).
 postal_code = client.PostalCode.load({ "postal_code" => "postal_code" })
 ```
 
@@ -342,7 +343,7 @@ Create an instance: `state = client.State`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `Array` |  |
+| `estados` | `Array` |  |
 
 #### Example: List
 
@@ -429,7 +430,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 municipality = client.Municipality
-municipality.load()
+municipality.load({ "state" => "example" })
 
 # municipality.data_get now returns the municipality data from the last load
 # municipality.match_get returns the last match criteria

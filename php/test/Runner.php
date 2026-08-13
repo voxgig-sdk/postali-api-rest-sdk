@@ -43,8 +43,8 @@ class PostaliApiRestTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('POSTALIAPIREST_TEST_LIVE');
-        $override = self::getenv('POSTALIAPIREST_TEST_OVERRIDE');
+        $live = self::getenv('POSTALI_API_REST_TEST_LIVE');
+        $override = self::getenv('POSTALI_API_REST_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class PostaliApiRestTestRunner
             }
         }
 
-        $explain = self::getenv('POSTALIAPIREST_TEST_EXPLAIN');
+        $explain = self::getenv('POSTALI_API_REST_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['POSTALIAPIREST_TEST_EXPLAIN'] = $explain;
+            $m['POSTALI_API_REST_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

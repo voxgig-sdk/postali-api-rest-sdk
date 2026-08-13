@@ -13,11 +13,11 @@
 # @!attribute [rw] estado
 #   @return [String, nil]
 #
-# @!attribute [rw] municipio
+# @!attribute [rw] municipios
 #   @return [Array, nil]
 Municipality = Struct.new(
   :estado,
-  :municipio,
+  :municipios,
   keyword_init: true
 )
 
@@ -38,7 +38,7 @@ MunicipalityLoadMatch = Struct.new(
 # @!attribute [rw] codigo_postal
 #   @return [String, nil]
 #
-# @!attribute [rw] colonia
+# @!attribute [rw] colonias
 #   @return [Array, nil]
 #
 # @!attribute [rw] estado
@@ -49,7 +49,7 @@ MunicipalityLoadMatch = Struct.new(
 PostalCode = Struct.new(
   :ciudad,
   :codigo_postal,
-  :colonia,
+  :colonias,
   :estado,
   :municipio,
   keyword_init: true
@@ -66,19 +66,19 @@ PostalCodeLoadMatch = Struct.new(
 
 # State entity data model.
 #
-# @!attribute [rw] estado
+# @!attribute [rw] estados
 #   @return [Array, nil]
 State = Struct.new(
-  :estado,
+  :estados,
   keyword_init: true
 )
 
 # Request payload for State#list.
 #
-# @!attribute [rw] estado
+# @!attribute [rw] estados
 #   @return [Array, nil]
 StateListMatch = Struct.new(
-  :estado,
+  :estados,
   keyword_init: true
 )
 

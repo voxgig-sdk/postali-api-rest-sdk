@@ -141,7 +141,7 @@ const municipality = client.Municipality()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `estado` | `string` | No |  |
-| `municipio` | `any[]` | No |  |
+| `municipios` | `any[]` | No |  |
 
 ### Operations
 
@@ -193,7 +193,7 @@ const postal_code = client.PostalCode()
 | --- | --- | --- | --- |
 | `ciudad` | `string` | No |  |
 | `codigo_postal` | `string` | No |  |
-| `colonia` | `any[]` | No |  |
+| `colonias` | `any[]` | No |  |
 | `estado` | `string` | No |  |
 | `municipio` | `string` | No |  |
 
@@ -245,7 +245,7 @@ const state = client.State()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `any[]` | No |  |
+| `estados` | `any[]` | No |  |
 
 ### Operations
 

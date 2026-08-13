@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ PostaliApiRestUtility.registrar = ->(u) {
   u.prepare_params = PostaliApiRestUtilities::PrepareParams
   u.prepare_path = PostaliApiRestUtilities::PreparePath
   u.prepare_query = PostaliApiRestUtilities::PrepareQuery
+  u.graphql_body = PostaliApiRestUtilities::GraphqlBody
+  u.graphql_errors = PostaliApiRestUtilities::GraphqlErrors
   u.result_basic = PostaliApiRestUtilities::ResultBasic
   u.result_body = PostaliApiRestUtilities::ResultBody
   u.result_headers = PostaliApiRestUtilities::ResultHeaders

@@ -37,7 +37,7 @@ class StateEntity extends PostaliApiRestEntityBase<State> {
 
 
 
-  async list(this: any, reqmatch?: StateListMatch, ctrl?: Control): Promise<State[]> {
+  async list(this: any, reqmatch?: StateListMatch, ctrl?: Control): Promise<StateEntity[]> {
 
     const utility = this._utility
 

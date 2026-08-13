@@ -26,8 +26,8 @@ import {
 describe('PostalCodeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when POSTALIAPIREST_TEST_LIVE=TRUE.
-  afterEach(liveDelay('POSTALIAPIREST_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when POSTALI_API_REST_TEST_LIVE=TRUE.
+  afterEach(liveDelay('POSTALI_API_REST_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = PostaliApiRestSDK.test()

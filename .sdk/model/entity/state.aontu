@@ -6,7 +6,7 @@ main: kit: entity: state: {
 
   fields: [
     {
-      name: "estado"
+      name: "estados"
       req: false
       type: "`$ARRAY`"
     }
@@ -25,7 +25,7 @@ main: kit: entity: state: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.estados`"
           }
         }
       ]

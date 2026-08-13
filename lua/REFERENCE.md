@@ -99,7 +99,7 @@ local municipality = client:Municipality(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `estado` | `string` | No |  |
-| `municipio` | `table` | No |  |
+| `municipios` | `table` | No |  |
 
 ### Operations
 
@@ -153,7 +153,7 @@ local postal_code = client:PostalCode(nil)
 | --- | --- | --- | --- |
 | `ciudad` | `string` | No |  |
 | `codigo_postal` | `string` | No |  |
-| `colonia` | `table` | No |  |
+| `colonias` | `table` | No |  |
 | `estado` | `string` | No |  |
 | `municipio` | `string` | No |  |
 
@@ -207,7 +207,7 @@ local state = client:State(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `table` | No |  |
+| `estados` | `table` | No |  |
 
 ### Operations
 

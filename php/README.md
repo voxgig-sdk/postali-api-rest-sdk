@@ -37,7 +37,7 @@ Municipality is nested under state, so provide the `state`.
 
 ```php
 try {
-    // load() returns the bare Municipality record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Municipality record (throws on error).
     $municipality = $client->Municipality()->load(["state" => "example_state"]);
     print_r($municipality);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $municipality = $client->Municipality()->load();
+    $municipality = $client->Municipality()->load(["state" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,8 +125,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = PostaliApiRestSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$municipality = $client->Municipality()->load();
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$municipality = $client->Municipality()->load(["state" => "example"]);
 print_r($municipality);
 ```
 
@@ -227,7 +228,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -250,7 +251,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `estado` |  |
-| `municipio` |  |
+| `municipios` |  |
 
 Operations: Load.
 
@@ -262,7 +263,7 @@ API path: `/municipios/{state}`
 | --- | --- |
 | `ciudad` |  |
 | `codigo_postal` |  |
-| `colonia` |  |
+| `colonias` |  |
 | `estado` |  |
 | `municipio` |  |
 
@@ -274,7 +275,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
+| `estados` |  |
 
 Operations: List.
 
@@ -300,12 +301,12 @@ Create an instance: `$municipality = $client->Municipality();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `estado` | `string` |  |
-| `municipio` | `array` |  |
+| `municipios` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Municipality record (throws on error).
+// load() returns the ENTITY — call data_get() for the Municipality record (throws on error).
 $municipality = $client->Municipality()->load(["state" => "state"]);
 ```
 
@@ -326,14 +327,14 @@ Create an instance: `$postal_code = $client->PostalCode();`
 | --- | --- | --- |
 | `ciudad` | `string` |  |
 | `codigo_postal` | `string` |  |
-| `colonia` | `array` |  |
+| `colonias` | `array` |  |
 | `estado` | `string` |  |
 | `municipio` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare PostalCode record (throws on error).
+// load() returns the ENTITY — call data_get() for the PostalCode record (throws on error).
 $postal_code = $client->PostalCode()->load(["postal_code" => "postal_code"]);
 ```
 
@@ -352,7 +353,7 @@ Create an instance: `$state = $client->State();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `array` |  |
+| `estados` | `array` |  |
 
 #### Example: List
 
@@ -439,7 +440,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $municipality = $client->Municipality();
-$municipality->load();
+$municipality->load(["state" => "example"]);
 
 // $municipality->data_get() now returns the municipality data from the last load
 // $municipality->match_get() returns the last match criteria

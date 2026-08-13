@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from postaliapirest_sdk.utility.voxgig_struct import voxgig_struct as vs
 from postaliapirest_sdk import PostaliApiRestSDK
-from core import helpers
+from postaliapirest_sdk.core import helpers
 from test import runner
 
 
@@ -63,11 +63,11 @@ def _municipality_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "POSTALIAPIREST_TEST_MUNICIPALITY_ENTID": {},
-        "POSTALIAPIREST_TEST_LIVE": "FALSE",
+        "POSTALI_API_REST_TEST_MUNICIPALITY_ENTID": {},
+        "POSTALI_API_REST_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("POSTALIAPIREST_TEST_LIVE") == "TRUE"
+    live = env.get("POSTALI_API_REST_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

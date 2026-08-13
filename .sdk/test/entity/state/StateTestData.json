@@ -2,20 +2,20 @@
   "existing": {
     "state": {
       "STATE00": {
-        "estado": []
+        "estados": []
       },
       "STATE01": {
-        "estado": []
+        "estados": []
       },
       "STATE02": {
-        "estado": []
+        "estados": []
       }
     }
   },
   "new": {
     "state": {
       "state_ref01": {
-        "estado": []
+        "estados": []
       }
     }
   }

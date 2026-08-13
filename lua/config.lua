@@ -35,7 +35,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "municipio",
+            ["name"] = "municipios",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
@@ -63,6 +63,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/municipios/{state}",
                 ["parts"] = {
@@ -110,7 +111,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "colonia",
+            ["name"] = "colonias",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -152,6 +153,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/codigo_postal/{postalCode}",
                 ["parts"] = {
@@ -190,7 +192,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "estado",
+            ["name"] = "estados",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -205,6 +207,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/estados",
                 ["parts"] = {
@@ -213,7 +216,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.estados`",
                 },
                 ["index$"] = 0,
               },

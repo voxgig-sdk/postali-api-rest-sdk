@@ -21,6 +21,7 @@ guide: {
   entity: state: {
     path: "/estados": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.estados`")|top
     }
   }
 

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# PostaliApiRest SDK exists test
 
 import pytest
 from postaliapirest_sdk import PostaliApiRestSDK

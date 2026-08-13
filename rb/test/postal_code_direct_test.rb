@@ -67,11 +67,11 @@ def postal_code_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "POSTALIAPIREST_TEST_POSTAL_CODE_ENTID" => {},
-    "POSTALIAPIREST_TEST_LIVE" => "FALSE",
+    "POSTALI_API_REST_TEST_POSTAL_CODE_ENTID" => {},
+    "POSTALI_API_REST_TEST_LIVE" => "FALSE",
   })
 
-  live = env["POSTALIAPIREST_TEST_LIVE"] == "TRUE"
+  live = env["POSTALI_API_REST_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

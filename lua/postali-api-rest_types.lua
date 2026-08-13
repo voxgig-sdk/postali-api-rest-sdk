@@ -8,7 +8,7 @@
 
 ---@class Municipality
 ---@field estado? string
----@field municipio? table
+---@field municipios? table
 
 ---@class MunicipalityLoadMatch
 ---@field state string
@@ -16,7 +16,7 @@
 ---@class PostalCode
 ---@field ciudad? string
 ---@field codigo_postal? string
----@field colonia? table
+---@field colonias? table
 ---@field estado? string
 ---@field municipio? string
 
@@ -24,10 +24,10 @@
 ---@field postal_code string
 
 ---@class State
----@field estado? table
+---@field estados? table
 
 ---@class StateListMatch
----@field estado? table
+---@field estados? table
 
 local M = {}
 

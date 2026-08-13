@@ -61,11 +61,11 @@ function state_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["POSTALIAPIREST_TEST_STATE_ENTID"] = {},
-    ["POSTALIAPIREST_TEST_LIVE"] = "FALSE",
+    ["POSTALI_API_REST_TEST_STATE_ENTID"] = {},
+    ["POSTALI_API_REST_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["POSTALIAPIREST_TEST_LIVE"] == "TRUE"
+  local live = env["POSTALI_API_REST_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

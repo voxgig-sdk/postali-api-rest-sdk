@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local municipality, err = client:Municipality():load()
+local municipality, err = client:Municipality():load({ state = "example" })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Municipality():load()
+local result, err = client:Municipality():load({ state = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -232,7 +232,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `estado` |  |
-| `municipio` |  |
+| `municipios` |  |
 
 Operations: Load.
 
@@ -244,7 +244,7 @@ API path: `/municipios/{state}`
 | --- | --- |
 | `ciudad` |  |
 | `codigo_postal` |  |
-| `colonia` |  |
+| `colonias` |  |
 | `estado` |  |
 | `municipio` |  |
 
@@ -256,7 +256,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
+| `estados` |  |
 
 Operations: List.
 
@@ -282,7 +282,7 @@ Create an instance: `local municipality = client:Municipality(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `estado` | `string` |  |
-| `municipio` | `table` |  |
+| `municipios` | `table` |  |
 
 #### Example: Load
 
@@ -307,7 +307,7 @@ Create an instance: `local postal_code = client:PostalCode(nil)`
 | --- | --- | --- |
 | `ciudad` | `string` |  |
 | `codigo_postal` | `string` |  |
-| `colonia` | `table` |  |
+| `colonias` | `table` |  |
 | `estado` | `string` |  |
 | `municipio` | `string` |  |
 
@@ -332,7 +332,7 @@ Create an instance: `local state = client:State(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `table` |  |
+| `estados` | `table` |  |
 
 #### Example: List
 
@@ -418,7 +418,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local municipality = client:Municipality()
-municipality:load()
+municipality:load({ state = "example" })
 
 -- municipality:data_get() now returns the municipality data from the last load
 -- municipality:match_get() returns the last match criteria

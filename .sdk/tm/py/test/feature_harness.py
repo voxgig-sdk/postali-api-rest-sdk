@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import PostaliApiRestControl
-from core.error import PostaliApiRestError
-from core.result import PostaliApiRestResult
-from core.spec import PostaliApiRestSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import PostaliApiRestControl
+from projectname_sdk.core.error import PostaliApiRestError
+from projectname_sdk.core.result import PostaliApiRestResult
+from projectname_sdk.core.spec import PostaliApiRestSpec
 
 
 # True when this SDK was generated with the named feature.

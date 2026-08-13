@@ -11,7 +11,7 @@ main: kit: entity: municipality: {
       type: "`$STRING`"
     }
     {
-      name: "municipio"
+      name: "municipios"
       req: false
       type: "`$ARRAY`"
     }

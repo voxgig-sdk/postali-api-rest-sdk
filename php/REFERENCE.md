@@ -101,7 +101,7 @@ $municipality = $client->Municipality();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `estado` | `string` | No |  |
-| `municipio` | `array` | No |  |
+| `municipios` | `array` | No |  |
 
 ### Operations
 
@@ -155,7 +155,7 @@ $postal_code = $client->PostalCode();
 | --- | --- | --- | --- |
 | `ciudad` | `string` | No |  |
 | `codigo_postal` | `string` | No |  |
-| `colonia` | `array` | No |  |
+| `colonias` | `array` | No |  |
 | `estado` | `string` | No |  |
 | `municipio` | `string` | No |  |
 
@@ -209,7 +209,7 @@ $state = $client->State();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `array` | No |  |
+| `estados` | `array` | No |  |
 
 ### Operations
 

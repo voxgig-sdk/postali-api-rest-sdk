@@ -16,7 +16,7 @@ declare(strict_types=1);
 class Municipality
 {
     public ?string $estado = null;
-    public ?array $municipio = null;
+    public ?array $municipios = null;
 }
 
 /** Request payload for Municipality#load. */
@@ -30,7 +30,7 @@ class PostalCode
 {
     public ?string $ciudad = null;
     public ?string $codigo_postal = null;
-    public ?array $colonia = null;
+    public ?array $colonias = null;
     public ?string $estado = null;
     public ?string $municipio = null;
 }
@@ -44,12 +44,12 @@ class PostalCodeLoadMatch
 /** State entity data model. */
 class State
 {
-    public ?array $estado = null;
+    public ?array $estados = null;
 }
 
 /** Request payload for State#list. */
 class StateListMatch
 {
-    public ?array $estado = null;
+    public ?array $estados = null;
 }
 

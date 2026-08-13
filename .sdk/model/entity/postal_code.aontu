@@ -16,7 +16,7 @@ main: kit: entity: postal_code: {
       type: "`$STRING`"
     }
     {
-      name: "colonia"
+      name: "colonias"
       req: false
       type: "`$ARRAY`"
     }

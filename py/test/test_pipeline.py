@@ -16,11 +16,11 @@
 import pytest
 
 from postaliapirest_sdk import PostaliApiRestSDK
-from core.error import PostaliApiRestError
-from core.result import PostaliApiRestResult
-from core.response import PostaliApiRestResponse
-from core.spec import PostaliApiRestSpec
-from feature.base_feature import PostaliApiRestBaseFeature
+from postaliapirest_sdk.core.error import PostaliApiRestError
+from postaliapirest_sdk.core.result import PostaliApiRestResult
+from postaliapirest_sdk.core.response import PostaliApiRestResponse
+from postaliapirest_sdk.core.spec import PostaliApiRestSpec
+from postaliapirest_sdk.feature.base_feature import PostaliApiRestBaseFeature
 
 
 def _client():

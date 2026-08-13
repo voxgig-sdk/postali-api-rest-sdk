@@ -56,7 +56,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const municipality = await client.Municipality().load()
+  const municipality = await client.Municipality().load({ state: "example" })
   console.log(municipality)
 } catch (err) {
   console.error('load failed:', err)
@@ -123,8 +123,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = PostaliApiRestSDK.test()
 
-const municipality = await client.Municipality().load()
-// municipality is a bare entity populated with mock response data
+const municipality = await client.Municipality().load({ state: 'example_state' })
+// municipality is the entity, populated with mock response data
+// — call municipality.data() for the record itself
 console.log(municipality)
 ```
 
@@ -143,7 +144,7 @@ Entity instances remember their last match and data:
 const entity = client.Municipality()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ state: 'example_state' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -293,7 +294,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `estado` |  |
-| `municipio` |  |
+| `municipios` |  |
 
 Operations: load.
 
@@ -305,7 +306,7 @@ API path: `/municipios/{state}`
 | --- | --- |
 | `ciudad` |  |
 | `codigo_postal` |  |
-| `colonia` |  |
+| `colonias` |  |
 | `estado` |  |
 | `municipio` |  |
 
@@ -317,7 +318,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
+| `estados` |  |
 
 Operations: list.
 
@@ -343,7 +344,7 @@ Create an instance: `const municipality = client.Municipality()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `estado` | `string` |  |
-| `municipio` | `any[]` |  |
+| `municipios` | `any[]` |  |
 
 #### Example: Load
 
@@ -368,7 +369,7 @@ Create an instance: `const postal_code = client.PostalCode()`
 | --- | --- | --- |
 | `ciudad` | `string` |  |
 | `codigo_postal` | `string` |  |
-| `colonia` | `any[]` |  |
+| `colonias` | `any[]` |  |
 | `estado` | `string` |  |
 | `municipio` | `string` |  |
 
@@ -393,7 +394,7 @@ Create an instance: `const state = client.State()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `any[]` |  |
+| `estados` | `any[]` |  |
 
 #### Example: List
 
@@ -472,7 +473,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const municipality = client.Municipality()
-await municipality.load()
+await municipality.load({ state: "example" })
 
 // municipality.data() now returns the municipality data from the last `load`
 // municipality.match() returns the last match criteria

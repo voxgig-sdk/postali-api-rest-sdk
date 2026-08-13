@@ -107,7 +107,7 @@ fmt.Println(municipality.GetName()) // "municipality"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `estado` | `string` | No |  |
-| `municipio` | `[]any` | No |  |
+| `municipios` | `[]any` | No |  |
 
 ### Operations
 
@@ -160,7 +160,7 @@ fmt.Println(postalCode.GetName()) // "postal_code"
 | --- | --- | --- | --- |
 | `ciudad` | `string` | No |  |
 | `codigo_postal` | `string` | No |  |
-| `colonia` | `[]any` | No |  |
+| `colonias` | `[]any` | No |  |
 | `estado` | `string` | No |  |
 | `municipio` | `string` | No |  |
 
@@ -213,7 +213,7 @@ fmt.Println(state.GetName()) // "state"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `[]any` | No |  |
+| `estados` | `[]any` | No |  |
 
 ### Operations
 

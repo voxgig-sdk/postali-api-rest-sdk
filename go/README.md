@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-municipality, err := client.Municipality(nil).Load(nil, nil)
+municipality, err := client.Municipality(nil).Load(map[string]any{"state": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 municipality, err := client.Municipality(nil).Load(
-    nil, nil,
+    map[string]any{"state": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -263,7 +263,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"estado"` |  |
-| `"municipio"` |  |
+| `"municipios"` |  |
 
 Operations: Load.
 
@@ -275,7 +275,7 @@ API path: `/municipios/{state}`
 | --- | --- |
 | `"ciudad"` |  |
 | `"codigo_postal"` |  |
-| `"colonia"` |  |
+| `"colonias"` |  |
 | `"estado"` |  |
 | `"municipio"` |  |
 
@@ -287,7 +287,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `"estado"` |  |
+| `"estados"` |  |
 
 Operations: List.
 
@@ -313,7 +313,7 @@ Create an instance: `municipality := client.Municipality(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `estado` | `string` |  |
-| `municipio` | `[]any` |  |
+| `municipios` | `[]any` |  |
 
 #### Example: Load
 
@@ -342,7 +342,7 @@ Create an instance: `postalCode := client.PostalCode(nil)`
 | --- | --- | --- |
 | `ciudad` | `string` |  |
 | `codigo_postal` | `string` |  |
-| `colonia` | `[]any` |  |
+| `colonias` | `[]any` |  |
 | `estado` | `string` |  |
 | `municipio` | `string` |  |
 
@@ -371,7 +371,7 @@ Create an instance: `state := client.State(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `[]any` |  |
+| `estados` | `[]any` |  |
 
 #### Example: List
 
@@ -458,7 +458,7 @@ stores the returned data and match criteria internally.
 
 ```go
 municipality := client.Municipality(nil)
-municipality.Load(nil, nil)
+municipality.Load(map[string]any{"state": "example"}, nil)
 
 // municipality.Data() now returns the municipality data from the last load
 // municipality.Match() returns the last match criteria

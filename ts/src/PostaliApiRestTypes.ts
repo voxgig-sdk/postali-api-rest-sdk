@@ -7,7 +7,7 @@
 
 export interface Municipality {
   estado?: string
-  municipio?: any[]
+  municipios?: any[]
 }
 
 export interface MunicipalityLoadMatch {
@@ -17,7 +17,7 @@ export interface MunicipalityLoadMatch {
 export interface PostalCode {
   ciudad?: string
   codigo_postal?: string
-  colonia?: any[]
+  colonias?: any[]
   estado?: string
   municipio?: string
 }
@@ -27,10 +27,10 @@ export interface PostalCodeLoadMatch {
 }
 
 export interface State {
-  estado?: any[]
+  estados?: any[]
 }
 
 export interface StateListMatch {
-  estado?: any[]
+  estados?: any[]
 }
 

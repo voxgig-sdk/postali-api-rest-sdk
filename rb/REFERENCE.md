@@ -102,7 +102,7 @@ municipality = client.Municipality
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `estado` | `String` | No |  |
-| `municipio` | `Array` | No |  |
+| `municipios` | `Array` | No |  |
 
 ### Operations
 
@@ -156,7 +156,7 @@ postal_code = client.PostalCode
 | --- | --- | --- | --- |
 | `ciudad` | `String` | No |  |
 | `codigo_postal` | `String` | No |  |
-| `colonia` | `Array` | No |  |
+| `colonias` | `Array` | No |  |
 | `estado` | `String` | No |  |
 | `municipio` | `String` | No |  |
 
@@ -210,7 +210,7 @@ state = client.State
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `Array` | No |  |
+| `estados` | `Array` | No |  |
 
 ### Operations
 
