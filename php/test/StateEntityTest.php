@@ -40,7 +40,7 @@ class StateEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = PostaliApiRestConfig::make_config();
+        $cfg = PostaliApiRestConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = PostaliApiRestSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

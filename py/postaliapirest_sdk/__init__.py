@@ -23,8 +23,8 @@ class PostaliApiRestSDK:
         utility = PostaliApiRestUtility()
         self._utility = utility
 
-        from postaliapirest_sdk.config import make_config
-        config = make_config()
+        from postaliapirest_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

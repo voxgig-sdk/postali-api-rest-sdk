@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class PostaliApiRestConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -33,18 +56,12 @@ class PostaliApiRestConfig
         'municipality' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'estado',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'municipios',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'municipality',
@@ -54,18 +71,15 @@ class PostaliApiRestConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'Ciudad de México',
                         'kind' => 'param',
                         'name' => 'state',
                         'orig' => 'state',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -85,10 +99,8 @@ class PostaliApiRestConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -102,39 +114,24 @@ class PostaliApiRestConfig
         'postal_code' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'ciudad',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'codigo_postal',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'colonias',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'estado',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'municipio',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 4,
             ],
           ],
           'name' => 'postal_code',
@@ -144,18 +141,15 @@ class PostaliApiRestConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => '01000',
                         'kind' => 'param',
                         'name' => 'postal_code',
                         'orig' => 'postal_code',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -180,10 +174,8 @@ class PostaliApiRestConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -197,11 +189,8 @@ class PostaliApiRestConfig
         'state' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'estados',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 0,
             ],
           ],
           'name' => 'state',
@@ -211,7 +200,6 @@ class PostaliApiRestConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -224,10 +212,8 @@ class PostaliApiRestConfig
                     'req' => '`reqdata`',
                     'res' => '`body.estados`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [

@@ -28,7 +28,7 @@ class PostaliApiRestSDK
     utility = PostaliApiRestUtility.new
     @_utility = utility
 
-    config = PostaliApiRestConfig.make_config
+    config = PostaliApiRestConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

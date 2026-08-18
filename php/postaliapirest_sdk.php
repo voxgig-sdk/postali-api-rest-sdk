@@ -40,7 +40,7 @@ class PostaliApiRestSDK
         $utility = new PostaliApiRestUtility();
         $this->_utility = $utility;
 
-        $config = PostaliApiRestConfig::make_config();
+        $config = PostaliApiRestConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
