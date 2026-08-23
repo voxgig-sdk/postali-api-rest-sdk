@@ -8,26 +8,31 @@ main: kit: entity: postal_code: {
     {
       name: "ciudad"
       req: false
+      short: "City name"
       type: "`$STRING`"
     }
     {
       name: "codigo_postal"
       req: false
+      short: "Postal code"
       type: "`$STRING`"
     }
     {
       name: "colonias"
       req: false
+      short: "List of settlements/neighborhoods"
       type: "`$ARRAY`"
     }
     {
       name: "estado"
       req: false
+      short: "State name"
       type: "`$STRING`"
     }
     {
       name: "municipio"
       req: false
+      short: "Municipality name"
       type: "`$STRING`"
     }
   ]

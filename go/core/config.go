@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "PostaliApiRest",
+			"slug": "postali-api-rest",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -35,10 +38,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "estado",
+						"short": "State name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "municipios",
+						"short": "List of municipalities",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -93,22 +98,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ciudad",
+						"short": "City name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "codigo_postal",
+						"short": "Postal code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "colonias",
+						"short": "List of settlements/neighborhoods",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "estado",
+						"short": "State name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "municipio",
+						"short": "Municipality name",
 						"type": "`$STRING`",
 					},
 				},
@@ -168,6 +178,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "estados",
+						"short": "List of Mexican states",
 						"type": "`$ARRAY`",
 					},
 				},

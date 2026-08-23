@@ -106,8 +106,8 @@ fmt.Println(municipality.GetName()) // "municipality"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `string` | No |  |
-| `municipios` | `[]any` | No |  |
+| `estado` | `string` | No | State name |
+| `municipios` | `[]any` | No | List of municipalities |
 
 ### Operations
 
@@ -158,11 +158,11 @@ fmt.Println(postalCode.GetName()) // "postal_code"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | `string` | No |  |
-| `codigo_postal` | `string` | No |  |
-| `colonias` | `[]any` | No |  |
-| `estado` | `string` | No |  |
-| `municipio` | `string` | No |  |
+| `ciudad` | `string` | No | City name |
+| `codigo_postal` | `string` | No | Postal code |
+| `colonias` | `[]any` | No | List of settlements/neighborhoods |
+| `estado` | `string` | No | State name |
+| `municipio` | `string` | No | Municipality name |
 
 ### Operations
 
@@ -213,7 +213,7 @@ fmt.Println(state.GetName()) // "state"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estados` | `[]any` | No |  |
+| `estados` | `[]any` | No | List of Mexican states |
 
 ### Operations
 

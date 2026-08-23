@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "PostaliApiRest",
+      slug = "postali-api-rest",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -31,10 +34,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "estado",
+            ["short"] = "State name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "municipios",
+            ["short"] = "List of municipalities",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -89,22 +94,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "ciudad",
+            ["short"] = "City name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "codigo_postal",
+            ["short"] = "Postal code",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "colonias",
+            ["short"] = "List of settlements/neighborhoods",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "estado",
+            ["short"] = "State name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "municipio",
+            ["short"] = "Municipality name",
             ["type"] = "`$STRING`",
           },
         },
@@ -164,6 +174,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "estados",
+            ["short"] = "List of Mexican states",
             ["type"] = "`$ARRAY`",
           },
         },

@@ -250,8 +250,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
-| `municipios` |  |
+| `estado` | State name |
+| `municipios` | List of municipalities |
 
 Operations: Load.
 
@@ -261,11 +261,11 @@ API path: `/municipios/{state}`
 
 | Field | Description |
 | --- | --- |
-| `ciudad` |  |
-| `codigo_postal` |  |
-| `colonias` |  |
-| `estado` |  |
-| `municipio` |  |
+| `ciudad` | City name |
+| `codigo_postal` | Postal code |
+| `colonias` | List of settlements/neighborhoods |
+| `estado` | State name |
+| `municipio` | Municipality name |
 
 Operations: Load.
 
@@ -275,7 +275,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estados` |  |
+| `estados` | List of Mexican states |
 
 Operations: List.
 
@@ -300,8 +300,8 @@ Create an instance: `$municipality = $client->Municipality();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `string` |  |
-| `municipios` | `array` |  |
+| `estado` | `string` | State name |
+| `municipios` | `array` | List of municipalities |
 
 #### Example: Load
 
@@ -325,11 +325,11 @@ Create an instance: `$postal_code = $client->PostalCode();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ciudad` | `string` |  |
-| `codigo_postal` | `string` |  |
-| `colonias` | `array` |  |
-| `estado` | `string` |  |
-| `municipio` | `string` |  |
+| `ciudad` | `string` | City name |
+| `codigo_postal` | `string` | Postal code |
+| `colonias` | `array` | List of settlements/neighborhoods |
+| `estado` | `string` | State name |
+| `municipio` | `string` | Municipality name |
 
 #### Example: Load
 
@@ -353,7 +353,7 @@ Create an instance: `$state = $client->State();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estados` | `array` |  |
+| `estados` | `array` | List of Mexican states |
 
 #### Example: List
 

@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -293,8 +293,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
-| `municipios` |  |
+| `estado` | State name |
+| `municipios` | List of municipalities |
 
 Operations: load.
 
@@ -304,11 +304,11 @@ API path: `/municipios/{state}`
 
 | Field | Description |
 | --- | --- |
-| `ciudad` |  |
-| `codigo_postal` |  |
-| `colonias` |  |
-| `estado` |  |
-| `municipio` |  |
+| `ciudad` | City name |
+| `codigo_postal` | Postal code |
+| `colonias` | List of settlements/neighborhoods |
+| `estado` | State name |
+| `municipio` | Municipality name |
 
 Operations: load.
 
@@ -318,7 +318,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estados` |  |
+| `estados` | List of Mexican states |
 
 Operations: list.
 
@@ -343,8 +343,8 @@ Create an instance: `const municipality = client.Municipality()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `string` |  |
-| `municipios` | `any[]` |  |
+| `estado` | `string` | State name |
+| `municipios` | `any[]` | List of municipalities |
 
 #### Example: Load
 
@@ -367,11 +367,11 @@ Create an instance: `const postal_code = client.PostalCode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ciudad` | `string` |  |
-| `codigo_postal` | `string` |  |
-| `colonias` | `any[]` |  |
-| `estado` | `string` |  |
-| `municipio` | `string` |  |
+| `ciudad` | `string` | City name |
+| `codigo_postal` | `string` | Postal code |
+| `colonias` | `any[]` | List of settlements/neighborhoods |
+| `estado` | `string` | State name |
+| `municipio` | `string` | Municipality name |
 
 #### Example: Load
 
@@ -394,7 +394,7 @@ Create an instance: `const state = client.State()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estados` | `any[]` |  |
+| `estados` | `any[]` | List of Mexican states |
 
 #### Example: List
 

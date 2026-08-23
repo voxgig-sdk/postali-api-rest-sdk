@@ -19,6 +19,9 @@ module PostaliApiRestConfig
     {
       "main" => {
         "name" => "PostaliApiRest",
+        "slug" => "postali-api-rest",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -43,10 +46,12 @@ module PostaliApiRestConfig
           "fields" => [
             {
               "name" => "estado",
+              "short" => "State name",
               "type" => "`$STRING`",
             },
             {
               "name" => "municipios",
+              "short" => "List of municipalities",
               "type" => "`$ARRAY`",
             },
           ],
@@ -101,22 +106,27 @@ module PostaliApiRestConfig
           "fields" => [
             {
               "name" => "ciudad",
+              "short" => "City name",
               "type" => "`$STRING`",
             },
             {
               "name" => "codigo_postal",
+              "short" => "Postal code",
               "type" => "`$STRING`",
             },
             {
               "name" => "colonias",
+              "short" => "List of settlements/neighborhoods",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "estado",
+              "short" => "State name",
               "type" => "`$STRING`",
             },
             {
               "name" => "municipio",
+              "short" => "Municipality name",
               "type" => "`$STRING`",
             },
           ],
@@ -176,6 +186,7 @@ module PostaliApiRestConfig
           "fields" => [
             {
               "name" => "estados",
+              "short" => "List of Mexican states",
               "type" => "`$ARRAY`",
             },
           ],

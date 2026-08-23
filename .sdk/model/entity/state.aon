@@ -8,6 +8,7 @@ main: kit: entity: state: {
     {
       name: "estados"
       req: false
+      short: "List of Mexican states"
       type: "`$ARRAY`"
     }
   ]

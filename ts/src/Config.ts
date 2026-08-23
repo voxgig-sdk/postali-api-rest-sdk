@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'PostaliApiRest',
+        slug: "postali-api-rest",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -62,10 +73,12 @@ class Config {
       "fields": [
         {
           "name": "estado",
+          "short": "State name",
           "type": "`$STRING`"
         },
         {
           "name": "municipios",
+          "short": "List of municipalities",
           "type": "`$ARRAY`"
         }
       ],
@@ -120,22 +133,27 @@ class Config {
       "fields": [
         {
           "name": "ciudad",
+          "short": "City name",
           "type": "`$STRING`"
         },
         {
           "name": "codigo_postal",
+          "short": "Postal code",
           "type": "`$STRING`"
         },
         {
           "name": "colonias",
+          "short": "List of settlements/neighborhoods",
           "type": "`$ARRAY`"
         },
         {
           "name": "estado",
+          "short": "State name",
           "type": "`$STRING`"
         },
         {
           "name": "municipio",
+          "short": "Municipality name",
           "type": "`$STRING`"
         }
       ],
@@ -195,6 +213,7 @@ class Config {
       "fields": [
         {
           "name": "estados",
+          "short": "List of Mexican states",
           "type": "`$ARRAY`"
         }
       ],

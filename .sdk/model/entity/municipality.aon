@@ -8,11 +8,13 @@ main: kit: entity: municipality: {
     {
       name: "estado"
       req: false
+      short: "State name"
       type: "`$STRING`"
     }
     {
       name: "municipios"
       req: false
+      short: "List of municipalities"
       type: "`$ARRAY`"
     }
   ]

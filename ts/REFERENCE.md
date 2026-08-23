@@ -140,8 +140,8 @@ const municipality = client.Municipality()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `string` | No |  |
-| `municipios` | `any[]` | No |  |
+| `estado` | `string` | No | State name |
+| `municipios` | `any[]` | No | List of municipalities |
 
 ### Operations
 
@@ -191,11 +191,11 @@ const postal_code = client.PostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | `string` | No |  |
-| `codigo_postal` | `string` | No |  |
-| `colonias` | `any[]` | No |  |
-| `estado` | `string` | No |  |
-| `municipio` | `string` | No |  |
+| `ciudad` | `string` | No | City name |
+| `codigo_postal` | `string` | No | Postal code |
+| `colonias` | `any[]` | No | List of settlements/neighborhoods |
+| `estado` | `string` | No | State name |
+| `municipio` | `string` | No | Municipality name |
 
 ### Operations
 
@@ -245,7 +245,7 @@ const state = client.State()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estados` | `any[]` | No |  |
+| `estados` | `any[]` | No | List of Mexican states |
 
 ### Operations
 

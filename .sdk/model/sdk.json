@@ -36,12 +36,14 @@
               "active": true,
               "name": "estado",
               "req": false,
+              "short": "State name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "municipios",
               "req": false,
+              "short": "List of municipalities",
               "type": "`$ARRAY`"
             }
           ],
@@ -104,30 +106,35 @@
               "active": true,
               "name": "ciudad",
               "req": false,
+              "short": "City name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "codigo_postal",
               "req": false,
+              "short": "Postal code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "colonias",
               "req": false,
+              "short": "List of settlements/neighborhoods",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "estado",
               "req": false,
+              "short": "State name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "municipio",
               "req": false,
+              "short": "Municipality name",
               "type": "`$STRING`"
             }
           ],
@@ -195,6 +202,7 @@
               "active": true,
               "name": "estados",
               "req": false,
+              "short": "List of Mexican states",
               "type": "`$ARRAY`"
             }
           ],

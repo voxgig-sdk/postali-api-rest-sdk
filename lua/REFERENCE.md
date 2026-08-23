@@ -98,8 +98,8 @@ local municipality = client:Municipality(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `string` | No |  |
-| `municipios` | `table` | No |  |
+| `estado` | `string` | No | State name |
+| `municipios` | `table` | No | List of municipalities |
 
 ### Operations
 
@@ -151,11 +151,11 @@ local postal_code = client:PostalCode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | `string` | No |  |
-| `codigo_postal` | `string` | No |  |
-| `colonias` | `table` | No |  |
-| `estado` | `string` | No |  |
-| `municipio` | `string` | No |  |
+| `ciudad` | `string` | No | City name |
+| `codigo_postal` | `string` | No | Postal code |
+| `colonias` | `table` | No | List of settlements/neighborhoods |
+| `estado` | `string` | No | State name |
+| `municipio` | `string` | No | Municipality name |
 
 ### Operations
 
@@ -207,7 +207,7 @@ local state = client:State(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estados` | `table` | No |  |
+| `estados` | `table` | No | List of Mexican states |
 
 ### Operations
 

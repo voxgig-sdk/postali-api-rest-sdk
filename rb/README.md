@@ -240,8 +240,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
-| `municipios` |  |
+| `estado` | State name |
+| `municipios` | List of municipalities |
 
 Operations: Load.
 
@@ -251,11 +251,11 @@ API path: `/municipios/{state}`
 
 | Field | Description |
 | --- | --- |
-| `ciudad` |  |
-| `codigo_postal` |  |
-| `colonias` |  |
-| `estado` |  |
-| `municipio` |  |
+| `ciudad` | City name |
+| `codigo_postal` | Postal code |
+| `colonias` | List of settlements/neighborhoods |
+| `estado` | State name |
+| `municipio` | Municipality name |
 
 Operations: Load.
 
@@ -265,7 +265,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estados` |  |
+| `estados` | List of Mexican states |
 
 Operations: List.
 
@@ -290,8 +290,8 @@ Create an instance: `municipality = client.Municipality`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `String` |  |
-| `municipios` | `Array` |  |
+| `estado` | `String` | State name |
+| `municipios` | `Array` | List of municipalities |
 
 #### Example: Load
 
@@ -315,11 +315,11 @@ Create an instance: `postal_code = client.PostalCode`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ciudad` | `String` |  |
-| `codigo_postal` | `String` |  |
-| `colonias` | `Array` |  |
-| `estado` | `String` |  |
-| `municipio` | `String` |  |
+| `ciudad` | `String` | City name |
+| `codigo_postal` | `String` | Postal code |
+| `colonias` | `Array` | List of settlements/neighborhoods |
+| `estado` | `String` | State name |
+| `municipio` | `String` | Municipality name |
 
 #### Example: Load
 
@@ -343,7 +343,7 @@ Create an instance: `state = client.State`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estados` | `Array` |  |
+| `estados` | `Array` | List of Mexican states |
 
 #### Example: List
 

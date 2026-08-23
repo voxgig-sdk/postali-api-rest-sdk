@@ -95,8 +95,8 @@ municipality = client.Municipality()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `str` | No |  |
-| `municipios` | `list` | No |  |
+| `estado` | `str` | No | State name |
+| `municipios` | `list` | No | List of municipalities |
 
 ### Operations
 
@@ -147,11 +147,11 @@ postal_code = client.PostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | `str` | No |  |
-| `codigo_postal` | `str` | No |  |
-| `colonias` | `list` | No |  |
-| `estado` | `str` | No |  |
-| `municipio` | `str` | No |  |
+| `ciudad` | `str` | No | City name |
+| `codigo_postal` | `str` | No | Postal code |
+| `colonias` | `list` | No | List of settlements/neighborhoods |
+| `estado` | `str` | No | State name |
+| `municipio` | `str` | No | Municipality name |
 
 ### Operations
 
@@ -202,7 +202,7 @@ state = client.State()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estados` | `list` | No |  |
+| `estados` | `list` | No | List of Mexican states |
 
 ### Operations
 

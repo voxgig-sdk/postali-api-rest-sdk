@@ -6,7 +6,7 @@ The Golang SDK for the PostaliApiRest API — an entity-oriented client using st
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Municipality(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -262,8 +262,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"estado"` |  |
-| `"municipios"` |  |
+| `"estado"` | State name |
+| `"municipios"` | List of municipalities |
 
 Operations: Load.
 
@@ -273,11 +273,11 @@ API path: `/municipios/{state}`
 
 | Field | Description |
 | --- | --- |
-| `"ciudad"` |  |
-| `"codigo_postal"` |  |
-| `"colonias"` |  |
-| `"estado"` |  |
-| `"municipio"` |  |
+| `"ciudad"` | City name |
+| `"codigo_postal"` | Postal code |
+| `"colonias"` | List of settlements/neighborhoods |
+| `"estado"` | State name |
+| `"municipio"` | Municipality name |
 
 Operations: Load.
 
@@ -287,7 +287,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `"estados"` |  |
+| `"estados"` | List of Mexican states |
 
 Operations: List.
 
@@ -312,8 +312,8 @@ Create an instance: `municipality := client.Municipality(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `string` |  |
-| `municipios` | `[]any` |  |
+| `estado` | `string` | State name |
+| `municipios` | `[]any` | List of municipalities |
 
 #### Example: Load
 
@@ -340,11 +340,11 @@ Create an instance: `postalCode := client.PostalCode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ciudad` | `string` |  |
-| `codigo_postal` | `string` |  |
-| `colonias` | `[]any` |  |
-| `estado` | `string` |  |
-| `municipio` | `string` |  |
+| `ciudad` | `string` | City name |
+| `codigo_postal` | `string` | Postal code |
+| `colonias` | `[]any` | List of settlements/neighborhoods |
+| `estado` | `string` | State name |
+| `municipio` | `string` | Municipality name |
 
 #### Example: Load
 
@@ -371,7 +371,7 @@ Create an instance: `state := client.State(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estados` | `[]any` |  |
+| `estados` | `[]any` | List of Mexican states |
 
 #### Example: List
 

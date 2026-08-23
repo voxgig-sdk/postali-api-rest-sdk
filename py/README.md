@@ -245,8 +245,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
-| `municipios` |  |
+| `estado` | State name |
+| `municipios` | List of municipalities |
 
 Operations: Load.
 
@@ -256,11 +256,11 @@ API path: `/municipios/{state}`
 
 | Field | Description |
 | --- | --- |
-| `ciudad` |  |
-| `codigo_postal` |  |
-| `colonias` |  |
-| `estado` |  |
-| `municipio` |  |
+| `ciudad` | City name |
+| `codigo_postal` | Postal code |
+| `colonias` | List of settlements/neighborhoods |
+| `estado` | State name |
+| `municipio` | Municipality name |
 
 Operations: Load.
 
@@ -270,7 +270,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estados` |  |
+| `estados` | List of Mexican states |
 
 Operations: List.
 
@@ -295,8 +295,8 @@ Create an instance: `municipality = client.Municipality()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `str` |  |
-| `municipios` | `list` |  |
+| `estado` | `str` | State name |
+| `municipios` | `list` | List of municipalities |
 
 #### Example: Load
 
@@ -319,11 +319,11 @@ Create an instance: `postal_code = client.PostalCode()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ciudad` | `str` |  |
-| `codigo_postal` | `str` |  |
-| `colonias` | `list` |  |
-| `estado` | `str` |  |
-| `municipio` | `str` |  |
+| `ciudad` | `str` | City name |
+| `codigo_postal` | `str` | Postal code |
+| `colonias` | `list` | List of settlements/neighborhoods |
+| `estado` | `str` | State name |
+| `municipio` | `str` | Municipality name |
 
 #### Example: Load
 
@@ -346,7 +346,7 @@ Create an instance: `state = client.State()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estados` | `list` |  |
+| `estados` | `list` | List of Mexican states |
 
 #### Example: List
 

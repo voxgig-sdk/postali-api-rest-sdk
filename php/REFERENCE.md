@@ -100,8 +100,8 @@ $municipality = $client->Municipality();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estado` | `string` | No |  |
-| `municipios` | `array` | No |  |
+| `estado` | `string` | No | State name |
+| `municipios` | `array` | No | List of municipalities |
 
 ### Operations
 
@@ -153,11 +153,11 @@ $postal_code = $client->PostalCode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ciudad` | `string` | No |  |
-| `codigo_postal` | `string` | No |  |
-| `colonias` | `array` | No |  |
-| `estado` | `string` | No |  |
-| `municipio` | `string` | No |  |
+| `ciudad` | `string` | No | City name |
+| `codigo_postal` | `string` | No | Postal code |
+| `colonias` | `array` | No | List of settlements/neighborhoods |
+| `estado` | `string` | No | State name |
+| `municipio` | `string` | No | Municipality name |
 
 ### Operations
 
@@ -209,7 +209,7 @@ $state = $client->State();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `estados` | `array` | No |  |
+| `estados` | `array` | No | List of Mexican states |
 
 ### Operations
 

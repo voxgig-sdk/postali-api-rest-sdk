@@ -231,8 +231,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `estado` |  |
-| `municipios` |  |
+| `estado` | State name |
+| `municipios` | List of municipalities |
 
 Operations: Load.
 
@@ -242,11 +242,11 @@ API path: `/municipios/{state}`
 
 | Field | Description |
 | --- | --- |
-| `ciudad` |  |
-| `codigo_postal` |  |
-| `colonias` |  |
-| `estado` |  |
-| `municipio` |  |
+| `ciudad` | City name |
+| `codigo_postal` | Postal code |
+| `colonias` | List of settlements/neighborhoods |
+| `estado` | State name |
+| `municipio` | Municipality name |
 
 Operations: Load.
 
@@ -256,7 +256,7 @@ API path: `/codigo_postal/{postalCode}`
 
 | Field | Description |
 | --- | --- |
-| `estados` |  |
+| `estados` | List of Mexican states |
 
 Operations: List.
 
@@ -281,8 +281,8 @@ Create an instance: `local municipality = client:Municipality(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estado` | `string` |  |
-| `municipios` | `table` |  |
+| `estado` | `string` | State name |
+| `municipios` | `table` | List of municipalities |
 
 #### Example: Load
 
@@ -305,11 +305,11 @@ Create an instance: `local postal_code = client:PostalCode(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ciudad` | `string` |  |
-| `codigo_postal` | `string` |  |
-| `colonias` | `table` |  |
-| `estado` | `string` |  |
-| `municipio` | `string` |  |
+| `ciudad` | `string` | City name |
+| `codigo_postal` | `string` | Postal code |
+| `colonias` | `table` | List of settlements/neighborhoods |
+| `estado` | `string` | State name |
+| `municipio` | `string` | Municipality name |
 
 #### Example: Load
 
@@ -332,7 +332,7 @@ Create an instance: `local state = client:State(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `estados` | `table` |  |
+| `estados` | `table` | List of Mexican states |
 
 #### Example: List
 
