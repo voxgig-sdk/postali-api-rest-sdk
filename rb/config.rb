@@ -28,6 +28,7 @@ module PostaliApiRestConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
