@@ -78,9 +78,13 @@ module PostaliApiRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/municipios/{state}",
-                  "parts" => [
-                    "municipios",
-                    "{state}",
+                  "segments" => [
+                    {
+                      "lit" => "municipios",
+                    },
+                    {
+                      "var" => "state",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -91,6 +95,10 @@ module PostaliApiRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "municipios",
+                    "{state}",
+                  ],
                 },
               ],
             },
@@ -153,15 +161,19 @@ module PostaliApiRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/codigo_postal/{postalCode}",
-                  "parts" => [
-                    "codigo_postal",
-                    "{postal_code}",
-                  ],
                   "rename" => {
                     "param" => {
                       "postalCode" => "postal_code",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "codigo_postal",
+                    },
+                    {
+                      "var" => "postal_code",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "postal_code",
@@ -171,6 +183,10 @@ module PostaliApiRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "codigo_postal",
+                    "{postal_code}",
+                  ],
                 },
               ],
             },
@@ -202,14 +218,19 @@ module PostaliApiRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/estados",
-                  "parts" => [
-                    "estados",
+                  "segments" => [
+                    {
+                      "lit" => "estados",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.estados`",
                   },
+                  "parts" => [
+                    "estados",
+                  ],
                 },
               ],
             },

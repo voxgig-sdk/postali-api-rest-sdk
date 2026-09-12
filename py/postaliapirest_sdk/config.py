@@ -1,6 +1,14 @@
 # PostaliApiRest SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -87,9 +95,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/municipios/{state}",
-                "parts": [
-                  "municipios",
-                  "{state}",
+                "segments": [
+                  {
+                    "lit": "municipios",
+                  },
+                  {
+                    "var": "state",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -100,6 +112,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "municipios",
+                  "{state}",
+                ],
               },
             ],
           },
@@ -162,15 +178,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/codigo_postal/{postalCode}",
-                "parts": [
-                  "codigo_postal",
-                  "{postal_code}",
-                ],
                 "rename": {
                   "param": {
                     "postalCode": "postal_code",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "codigo_postal",
+                  },
+                  {
+                    "var": "postal_code",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "postal_code",
@@ -180,6 +200,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "codigo_postal",
+                  "{postal_code}",
+                ],
               },
             ],
           },
@@ -211,14 +235,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/estados",
-                "parts": [
-                  "estados",
+                "segments": [
+                  {
+                    "lit": "estados",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.estados`",
                 },
+                "parts": [
+                  "estados",
+                ],
               },
             ],
           },

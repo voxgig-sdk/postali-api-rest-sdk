@@ -70,9 +70,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/municipios/{state}",
-								"parts": []any{
-									"municipios",
-									"{state}",
+								"segments": []any{
+									map[string]any{
+										"lit": "municipios",
+									},
+									map[string]any{
+										"var": "state",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -82,6 +86,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"municipios",
+									"{state}",
 								},
 							},
 						},
@@ -145,13 +153,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/codigo_postal/{postalCode}",
-								"parts": []any{
-									"codigo_postal",
-									"{postal_code}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"postalCode": "postal_code",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "codigo_postal",
+									},
+									map[string]any{
+										"var": "postal_code",
 									},
 								},
 								"select": map[string]any{
@@ -162,6 +174,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"codigo_postal",
+									"{postal_code}",
 								},
 							},
 						},
@@ -194,13 +210,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/estados",
-								"parts": []any{
-									"estados",
+								"segments": []any{
+									map[string]any{
+										"lit": "estados",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.estados`",
+								},
+								"parts": []any{
+									"estados",
 								},
 							},
 						},
@@ -212,6 +233,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

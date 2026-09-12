@@ -39,9 +39,13 @@ main: kit: entity: municipality: {
           }
           method: "GET"
           orig: "/municipios/{state}"
-          parts: [
-            "municipios"
-            "{state}"
+          segments: [
+            {
+              lit: "municipios"
+            }
+            {
+              var: "state"
+            }
           ]
           select: {
             exist: [

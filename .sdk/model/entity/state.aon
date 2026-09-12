@@ -21,8 +21,10 @@ main: kit: entity: state: {
         {
           method: "GET"
           orig: "/estados"
-          parts: [
-            "estados"
+          segments: [
+            {
+              lit: "estados"
+            }
           ]
           transform: {
             req: "`reqdata`"

@@ -66,9 +66,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/municipios/{state}",
-                ["parts"] = {
-                  "municipios",
-                  "{state}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "municipios",
+                  },
+                  {
+                    ["var"] = "state",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -78,6 +82,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "municipios",
+                  "{state}",
                 },
               },
             },
@@ -141,13 +149,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/codigo_postal/{postalCode}",
-                ["parts"] = {
-                  "codigo_postal",
-                  "{postal_code}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["postalCode"] = "postal_code",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "codigo_postal",
+                  },
+                  {
+                    ["var"] = "postal_code",
                   },
                 },
                 ["select"] = {
@@ -158,6 +170,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "codigo_postal",
+                  "{postal_code}",
                 },
               },
             },
@@ -190,13 +206,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/estados",
-                ["parts"] = {
-                  "estados",
+                ["segments"] = {
+                  {
+                    ["lit"] = "estados",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.estados`",
+                },
+                ["parts"] = {
+                  "estados",
                 },
               },
             },
