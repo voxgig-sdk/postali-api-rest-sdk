@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/postali-api-rest",
+  "name": "@voxgig-sdk/postali-api-rest-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the postali API REST public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

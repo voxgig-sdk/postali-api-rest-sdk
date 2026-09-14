@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest'
+import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest-sdk'
 
 const client = new PostaliApiRestSDK()
 ```
@@ -485,7 +485,7 @@ postali-api-rest/
 Import the SDK from the package root:
 
 ```ts
-import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest'
+import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest-sdk'
 ```
 
 ### Entity state

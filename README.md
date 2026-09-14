@@ -105,7 +105,7 @@ local result, err = client:Municipality():load({ state = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
+| TypeScript | `@voxgig-sdk/postali-api-rest-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
 | Python | `voxgig-sdk-postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
 | PHP | `voxgig-sdk/postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/postali-api-rest-sdk/go` | `go get github.com/voxgig-sdk/postali-api-rest-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Municipality():load({ state = "example" })
 ### TypeScript
 
 ```ts
-import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest'
+import { PostaliApiRestSDK } from '@voxgig-sdk/postali-api-rest-sdk'
 
 const client = new PostaliApiRestSDK()
 
