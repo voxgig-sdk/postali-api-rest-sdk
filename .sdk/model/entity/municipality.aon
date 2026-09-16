@@ -37,6 +37,12 @@ main: kit: entity: municipality: {
               }
             ]
           }
+          contract: {
+            id: "GET /municipios/{state}"
+            json: "{\"operationId\":\"getMunicipalitiesByState\",\"parameters\":[{\"description\":\"Mexican state name or code\",\"in\":\"path\",\"name\":\"state\",\"required\":true,\"schema\":{\"example\":\"Ciudad de México\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"estado\":{\"description\":\"State name\",\"example\":\"Ciudad de México\",\"type\":\"string\"},\"municipios\":{\"description\":\"List of municipalities\",\"example\":[\"Álvaro Obregón\",\"Azcapotzalco\",\"Benito Juárez\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of municipalities\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"example\":\"Postal code not found\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"State not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/municipios/{state}"
           segments: [

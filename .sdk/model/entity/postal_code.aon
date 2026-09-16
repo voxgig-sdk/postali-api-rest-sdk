@@ -55,6 +55,12 @@ main: kit: entity: postal_code: {
               }
             ]
           }
+          contract: {
+            id: "GET /codigo_postal/{postalCode}"
+            json: "{\"operationId\":\"getByPostalCode\",\"parameters\":[{\"description\":\"Mexican postal code (5 digits)\",\"in\":\"path\",\"name\":\"postalCode\",\"required\":true,\"schema\":{\"example\":\"01000\",\"pattern\":\"^[0-9]{5}$\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"ciudad\":{\"description\":\"City name\",\"example\":\"Ciudad de México\",\"type\":\"string\"},\"codigo_postal\":{\"description\":\"Postal code\",\"example\":\"01000\",\"type\":\"string\"},\"colonias\":{\"description\":\"List of settlements/neighborhoods\",\"example\":[\"San Ángel\",\"Tizapán\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"estado\":{\"description\":\"State name\",\"example\":\"Ciudad de México\",\"type\":\"string\"},\"municipio\":{\"description\":\"Municipality name\",\"example\":\"Álvaro Obregón\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with postal code information\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"example\":\"Postal code not found\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Invalid postal code format\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"example\":\"Postal code not found\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Postal code not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/codigo_postal/{postalCode}"
           rename: {

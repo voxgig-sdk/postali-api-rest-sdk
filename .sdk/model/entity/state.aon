@@ -19,6 +19,12 @@ main: kit: entity: state: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /estados"
+            json: "{\"operationId\":\"getStates\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"estados\":{\"description\":\"List of Mexican states\",\"example\":[\"Aguascalientes\",\"Baja California\",\"Baja California Sur\",\"Campeche\",\"Chiapas\",\"Chihuahua\",\"Ciudad de México\",\"Coahuila\",\"Colima\",\"Durango\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of states\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/estados"
           segments: [

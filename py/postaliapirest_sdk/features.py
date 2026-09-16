@@ -1,12 +1,18 @@
 # PostaliApiRest SDK feature factory
 
 from postaliapirest_sdk.feature.base_feature import PostaliApiRestBaseFeature
+from postaliapirest_sdk.feature.ratelimit_feature import PostaliApiRestRatelimitFeature
+from postaliapirest_sdk.feature.retry_feature import PostaliApiRestRetryFeature
 from postaliapirest_sdk.feature.test_feature import PostaliApiRestTestFeature
+from postaliapirest_sdk.feature.timeout_feature import PostaliApiRestTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: PostaliApiRestBaseFeature(),
+    "ratelimit": lambda: PostaliApiRestRatelimitFeature(),
+    "retry": lambda: PostaliApiRestRetryFeature(),
     "test": lambda: PostaliApiRestTestFeature(),
+    "timeout": lambda: PostaliApiRestTimeoutFeature(),
 }
 
 
