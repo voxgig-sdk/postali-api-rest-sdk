@@ -105,12 +105,12 @@ local result, err = client:Municipality():load({ state = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/postali-api-rest-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
-| Python | `voxgig-sdk-postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
-| PHP | `voxgig-sdk/postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
+| TypeScript | `@voxgig-sdk/postali-api-rest-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/tags) |
+| Python | `voxgig-sdk-postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/tags) |
+| PHP | `voxgig-sdk/postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/postali-api-rest-sdk/go` | `go get github.com/voxgig-sdk/postali-api-rest-sdk/go@latest` |
-| Ruby | `voxgig-sdk-postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
-| Lua | `voxgig-sdk-postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/releases) |
+| Ruby | `voxgig-sdk-postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/tags) |
+| Lua | `voxgig-sdk-postali-api-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/postali-api-rest-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/postali-api-rest-sdk/go-cli` | `go install github.com/voxgig-sdk/postali-api-rest-sdk/go-cli/cmd/postali-api-rest@latest` |
 | Go MCP server | `github.com/voxgig-sdk/postali-api-rest-sdk/go-mcp` | `go get github.com/voxgig-sdk/postali-api-rest-sdk/go-mcp@latest` |
 

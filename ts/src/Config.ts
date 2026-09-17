@@ -127,15 +127,15 @@ class Config {
 
     entity: {
       
-      municipality: {
-      },
-
-      postal_code: {
-      },
-
-      state: {
-      },
-
+        municipality: {
+        },
+  
+        postal_code: {
+        },
+  
+        state: {
+        },
+  
     }
   }
 

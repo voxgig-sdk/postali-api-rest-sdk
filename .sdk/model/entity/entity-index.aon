@@ -1,5 +1,5 @@
 # Entity Models
 
-@"municipality.aon"
-@"postal_code.aon"
-@"state.aon"
+@"./municipality.aon"
+@"./postal_code.aon"
+@"./state.aon"
